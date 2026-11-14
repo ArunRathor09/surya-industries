@@ -17,7 +17,7 @@ import { useLanguage } from "@/components/providers";
 export function SiteFooter() {
   const { text } = useLanguage();
   const footerLinks = [
-    { label: text.footer.about, href: "/#why-us" },
+    { label: text.footer.about, href: "/#about" },
     { label: text.footer.products, href: "/products" },
     { label: text.footer.industries, href: "/#industries" },
     { label: text.footer.contact, href: "/#home-enquiry" },

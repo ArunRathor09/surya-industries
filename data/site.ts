@@ -31,7 +31,7 @@ export const site = {
   badges: ["ISO 9001:2015 Certified", "Make in India", "NABL & CPRI Tested"],
   navigation: [
     { label: "Home", href: "/" },
-    { label: "About", href: "/#why-us" },
+    { label: "About", href: "/#about" },
     { label: "Products", href: "/products" },
     { label: "Industries", href: "/#industries" },
     { label: "Contact", href: "/#home-enquiry" },

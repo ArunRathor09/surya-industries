@@ -209,8 +209,23 @@ export const products: Product[] = [
       { label: "Materials", value: "Pure copper / copper bonded / hollow copper" },
       { label: "Solid rod sizes", value: "16 mm diameter, 1 m or 2 m" },
       { label: "Hollow pipe sizes", value: "25 mm diameter, 1 m or 2 m" },
+      {
+        label: "Copper coating on bonded variants",
+        value: "250–300 microns is cited for selected variants; confirm the supplied model",
+      },
     ],
-    features: ["Multiple material options", "Solid rod or hollow pipe formats"],
+    features: [
+      "Multiple material options",
+      "Solid rod or hollow pipe formats",
+      "Copper-bonded options combine a steel core with a corrosion-resistant copper surface",
+      "Final length and mounting arrangement should follow the lightning protection design",
+    ],
+    applications: [
+      "Residential and commercial buildings",
+      "Telecommunication towers",
+      "Industrial plants and power substations",
+      "Solar panel installations",
+    ],
     image: "/products/copper-lightning-arrester.jpg",
     imageAlt: "Placeholder image for copper lightning arrester",
   },
@@ -247,6 +262,10 @@ export const products: Product[] = [
       { label: "Durability", value: "15+ years" },
       { label: "Diameters", value: "14.2 / 17.2 / 20 / 25 / 32 mm" },
       { label: "Lengths", value: "1 / 2 / 3 m" },
+      {
+        label: "Additional common lengths",
+        value: "1.2 / 1.5 / 2.4 m are cited in supplementary notes; confirm the selected size with SPI",
+      },
       { label: "Testing", value: "NABL & CPRI tested" },
     ],
     features: [
@@ -255,6 +274,7 @@ export const products: Product[] = [
       "Highly conductive and anti-corrosive",
       "Designed for low-maintenance service",
       "NABL & CPRI tested",
+      "Copper bonding combines a mechanically strong steel core with a corrosion-resistant surface",
     ],
     image: "/products/copper-bonded-solid-earth-rod.jpg",
     imageAlt: "Placeholder image for copper bonded solid earth rod",
@@ -270,6 +290,10 @@ export const products: Product[] = [
       "A copper-bonded steel electrode with a copper-coated inner flat electrode and crystalline conductive compound filling. The compound helps retain moisture and support stable soil resistance.",
     specifications: [
       { label: "Diameters", value: "48 mm and 76 mm" },
+      {
+        label: "Additional typical diameters",
+        value: "58 mm and 76–100 mm variants are mentioned in supplementary notes; confirm availability",
+      },
       { label: "Lengths", value: "1 / 2 / 3 m" },
       { label: "Copper coating", value: "100–250 micron" },
       { label: "Electrode", value: "Copper-coated inner flat electrode" },
@@ -302,25 +326,32 @@ export const products: Product[] = [
     summary:
       "Hot-dip galvanized earth electrode with moisture booster chemical bags.",
     description:
-      "A galvanized iron electrode for safely dissipating fault or leakage current into the earth. The zinc coating helps resist corrosion; installation orientation and configuration should follow the site design.",
+      "A galvanized iron rod or pipe electrode for safely dissipating fault or leakage current into the earth. The zinc coating helps resist corrosion in soil and moisture; choose a solid or perforated design and install it according to site conditions and the grounding design.",
     specifications: [
       { label: "Diameters", value: "48 / 58 / 76 mm" },
+      {
+        label: "Other typical sizes in supplied notes",
+        value: "25–50 mm diameter and 2–3 m lengths are cited; confirm the exact SPI variant before specification",
+      },
       { label: "Lengths", value: "1 / 2 / 3 m" },
       { label: "Finish", value: "Hot-dip galvanized" },
       { label: "Included", value: "Moisture booster chemical bags" },
       { label: "Soil pH suitability", value: "5.0–8.0" },
       { label: "Testing", value: "NABL & CPRI tested" },
-      {
-        label: "Applications",
-        value:
-          "Residential and commercial buildings, substations and distribution networks, solar power systems",
-      },
     ],
     features: [
       "Supports fault current dissipation",
       "Low maintenance",
       "Moisture booster chemical bags",
       "Vertical or horizontal installation as per site design",
+      "Zinc coating helps protect the iron body from soil and moisture corrosion",
+      "Cost-effective option for residential, commercial and industrial installations",
+    ],
+    applications: [
+      "Residential and commercial buildings",
+      "Power substations and distribution networks",
+      "Solar power systems",
+      "Industrial electrical installations",
     ],
     image: "/products/gi-earth-electrode.jpg",
     imageAlt: "Placeholder image for GI earth electrode",
@@ -361,6 +392,7 @@ export const products: Product[] = [
       "Conductive backfill for moisture retention",
       "Suitable for high-resistivity soil applications",
       "Typical dimensions should be confirmed for each project",
+      "Backfill formulations may use bentonite, graphite or carbon-based conductors; select a compatible, non-corrosive grade",
     ],
     applications: [
       "Electrical panels and transformers",
@@ -382,9 +414,17 @@ export const products: Product[] = [
     specifications: [
       { label: "Material", value: "100% copper (99.9% electrolytic grade)" },
       { label: "Diameters", value: "48 mm and 76 mm" },
+      {
+        label: "Additional typical diameters",
+        value: "40 / 50 / 80 mm sizes are mentioned in supplementary notes; confirm the available model",
+      },
       { label: "Lengths", value: "1 / 2 / 3 m" },
       { label: "Soil pH suitability", value: "5.0–8.0" },
-      { label: "Included", value: "Moisture booster bags" },
+      {
+        label: "Typical resistance reference",
+        value: "Below 1 ohm is cited as a typical target; actual resistance depends on soil and system design",
+      },
+      { label: "Included", value: "Moisture booster bags on selected configurations" },
       { label: "Testing", value: "NABL & CPRI tested" },
     ],
     features: [
@@ -392,6 +432,7 @@ export const products: Product[] = [
       "Conductive backfill on selected chemical configurations",
       "Easy installation",
       "Moisture booster bags",
+      "Copper construction supports long service life in suitable soil conditions",
     ],
     applications: [
       "Data centres",
@@ -411,18 +452,30 @@ export const products: Product[] = [
     summary:
       "Graphite-based, non-toxic ground enhancing compound with resistivity below 0.2 ohm-meter.",
     description:
-      "SPI Guard Advance Ground Enhancing Compound helps retain moisture longer and reduces the need for frequent watering.",
+      "SPI Guard Advance Ground Enhancing Compound is a graphite-based, moisture-retaining material installed around an earth electrode to help lower and stabilize soil resistance. Follow the product data sheet and site design for preparation and installation.",
     specifications: [
       { label: "Bag sizes", value: "25 kg and 15 kg" },
+      {
+        label: "Other pack size mentioned",
+        value: "50 kg is listed in supplementary notes; confirm current availability with SPI",
+      },
       { label: "Resistivity", value: "Below 0.2 ohm-meter" },
       { label: "Composition", value: "Graphite based" },
       { label: "Safety", value: "Non-toxic" },
       { label: "Testing", value: "NABL accredited lab tested" },
     ],
     features: [
+      "Helps reduce soil resistivity around the electrode",
       "Retains moisture longer",
       "No frequent watering required",
       "NABL accredited lab tested",
+      "Backfill types across the market include bentonite, graphite, carbon and cement-based formulations; confirm compatibility for each installation",
+    ],
+    applications: [
+      "Power stations and substations",
+      "Telecommunication towers",
+      "Solar and wind farms",
+      "Industrial plants and data centres",
     ],
     image: "/products/surya-power-backfill-compound.jpg",
     imageAlt: "Placeholder image for Surya Power backfill compound",
@@ -457,6 +510,10 @@ export const products: Product[] = [
       { label: "Grade", value: "EC grade" },
       { label: "Copper purity", value: "99.9% Cu" },
       { label: "Sizes", value: "25x3 mm to 100x10 mm" },
+      {
+        label: "Typical range in supplementary notes",
+        value: "Widths 20–100 mm and thicknesses 2–10 mm; confirm exact dimensions and finish",
+      },
       { label: "Applications", value: "LV / MV / HV substations" },
     ],
     features: ["Corrosion resistant", "EC-grade copper"],
@@ -477,7 +534,7 @@ export const products: Product[] = [
       { label: "Features", value: "UV resistant, chemical resistant, 2-screw fixing" },
       {
         label: "Additional variants",
-        value: "CI and PVC covers are mentioned in the supplementary product range; confirm sizes and availability with SPI",
+        value: "CI, PVC and FRP covers are also mentioned in supplementary notes; confirm material, load rating and availability with SPI",
       },
       {
         label: "SPI Micro 6”",
@@ -490,7 +547,18 @@ export const products: Product[] = [
       { label: "PEP", value: "308 x 308 x 215 mm, 2.5 kg, Polymer" },
       { label: "PEP-B 300", value: "500 x 500 x 315 mm, 5.0 kg, Polymer" },
     ],
-    features: ["UV and chemical resistant", "2-screw fixing"],
+    features: [
+      "UV and chemical resistant",
+      "2-screw fixing on the supplied SPI range",
+      "Helps prevent debris and accidental access while keeping the pit available for inspection",
+      "Load-bearing capacity varies by cover type and installation location",
+    ],
+    applications: [
+      "Electrical substations",
+      "Residential and commercial buildings",
+      "Telecommunication towers",
+      "Solar installations and industrial facilities",
+    ],
     image: "/products/earthing-pit-covers.jpg",
     imageAlt: "Placeholder image for earthing pit covers",
   },
@@ -504,15 +572,27 @@ export const products: Product[] = [
       "Copper earthing plates are part of SPI's supplied product range. Plate dimensions, thickness, connection details and availability are confirmed against the project requirement.",
     specifications: [
       {
-        label: "Dimensions and thickness",
-        value: "Confirm with SPI for the required project specification",
+        label: "Typical dimensions",
+        value: "300 x 300 mm or 600 x 600 mm, with 3–6 mm thickness; confirm project-specific availability",
       },
       {
-        label: "Applications",
-        value: "Project-specific earthing and grounding installations",
+        label: "Dimensions and thickness",
+        value: "Confirm the required size, thickness and connection details with SPI",
       },
     ],
-    features: ["Copper construction", "Project-specific configuration"],
+    features: [
+      "99.9% copper is preferred for high conductivity and corrosion resistance",
+      "Can be buried in a designed earth pit and connected with a compatible copper strip or conductor",
+      "Use compatible conductive backfill when specified by the earthing design",
+      "Copper construction",
+      "Project-specific configuration",
+    ],
+    applications: [
+      "Electrical substations",
+      "Residential and commercial buildings",
+      "Communication towers and data centres",
+      "Power generation plants",
+    ],
     image: "/products/copper-earthing-plate.jpg",
     imageAlt: "Placeholder image for copper earthing plate",
   },
@@ -551,14 +631,90 @@ export const products: Product[] = [
     description:
       "Solar plant earthing and lightning protection products and installation support for solar companies.",
     specifications: [
-      {
-        label: "Service",
-        value: "Solar plant earthing and lightning protection",
-      },
+      { label: "Service", value: "Solar plant earthing and lightning protection" },
       { label: "Support", value: "Solar company earthing support" },
+      {
+        label: "Service scope",
+        value: "Site assessment, system planning and installation; confirm project scope with SPI",
+      },
+      {
+        label: "System options",
+        value: "Grid-tied, off-grid or hybrid, based on site and utility requirements",
+      },
+      {
+        label: "Typical components",
+        value: "Panels, inverter, mounting structure, wiring, optional batteries and monitoring as specified",
+      },
+      {
+        label: "Service life reference",
+        value: "Solar modules commonly have a 25–30 year design life; product warranties vary by manufacturer",
+      },
     ],
     features: ["Solar plant earthing", "Solar lightning protection", "Installation support"],
+    applications: [
+      "Rooftop and ground-mounted solar projects",
+      "Grid-tied, off-grid and hybrid systems, subject to project design",
+      "Solar companies requiring earthing support",
+    ],
     image: "/products/solar-earthing-kit.jpg",
     imageAlt: "Placeholder image for solar earthing kit and installation service",
+  },
+  {
+    id: 19,
+    slug: "bare-copper-wire",
+    name: "Bare Copper Wire",
+    category: "Earthing",
+    summary:
+      "Uninsulated copper conductor for earthing, electrical bonding and lightning protection.",
+    description:
+      "Bare copper wire is an uninsulated copper conductor supplied in solid or stranded constructions. Its high conductivity makes it suitable for grounding and bonding connections; select the conductor size and construction for the current rating and installation design.",
+    specifications: [
+      { label: "Material", value: "Copper; purity and grade to be confirmed for the selected conductor" },
+      { label: "Construction", value: "Solid or stranded" },
+      { label: "Insulation", value: "Bare / uninsulated" },
+      { label: "Conductor size", value: "Project-specific; confirm gauge or cross-sectional area with SPI" },
+    ],
+    features: [
+      "High electrical conductivity",
+      "Suitable for earthing and electrical bonding",
+      "Flexible stranded options for routing requirements",
+      "Reusable and recyclable copper material",
+    ],
+    applications: [
+      "Grounding systems",
+      "Electrical bonding",
+      "Lightning protection systems",
+      "Automotive, marine and industrial installations",
+    ],
+    image: "/products/bare-copper-wire.jpg",
+    imageAlt: "Illustration placeholder for bare copper earthing wire",
+  },
+  {
+    id: 20,
+    slug: "bare-gi-wire",
+    name: "Bare GI Wire",
+    category: "Earthing",
+    summary:
+      "Galvanized iron wire for utility, construction and selected grounding applications.",
+    description:
+      "Bare GI wire is iron wire protected by a zinc coating and supplied without an additional insulation layer. It is an economical option for selected utility and construction uses; confirm its suitability for an electrical grounding application with the project designer.",
+    specifications: [
+      { label: "Material", value: "Galvanized iron" },
+      { label: "Coating", value: "Zinc galvanized; coating specification to be confirmed" },
+      { label: "Insulation", value: "Bare / uninsulated" },
+      { label: "Wire size", value: "Project-specific; confirm gauge or diameter with SPI" },
+    ],
+    features: [
+      "Zinc coating helps resist corrosion",
+      "Economical, workable wire construction",
+      "Available gauges and lengths should be confirmed for the project",
+    ],
+    applications: [
+      "Construction binding and fencing",
+      "General utility applications",
+      "Selected electrical grounding and bonding uses, subject to design",
+    ],
+    image: "/products/bare-gi-wire.jpg",
+    imageAlt: "Illustration placeholder for bare galvanized iron wire",
   },
 ];

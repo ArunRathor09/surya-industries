@@ -10,6 +10,7 @@ import {
   BadgeCheck,
   Phone,
   Sun,
+  Waypoints,
 } from "lucide-react";
 import { useLanguage } from "@/components/providers";
 import { ServiceImage } from "@/components/services/service-image";
@@ -179,6 +180,18 @@ export function Hero() {
               />
               <p className="absolute bottom-5 left-5 max-w-[68%] rounded-xl border border-white/15 bg-slate-950/35 px-3.5 py-3 text-xs leading-5 text-white shadow-lg backdrop-blur-md sm:bottom-6 sm:left-6 sm:text-sm">
                 {text.heroNote}
+              </p>
+            </div>
+            <div className="absolute left-[5%] top-10 z-30 hidden w-[132px] overflow-hidden rounded-2xl border border-white/80 bg-white/95 p-1.5 shadow-[0_18px_48px_rgb(15_23_42/22%)] backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/90 lg:block">
+              <ServiceImage
+                alt={text.heroEarthingAlt}
+                className="relative aspect-[1.2] w-full rounded-xl"
+                icon={Waypoints}
+                sizes="132px"
+                src={serviceImages["earthing-electrode"]}
+              />
+              <p className="px-1 pb-1 pt-2 text-center text-[8px] font-bold uppercase tracking-[0.12em] text-slate-600 dark:text-slate-300">
+                {text.heroEarthingBadge}
               </p>
             </div>
             <div className="absolute bottom-4 right-[5%] z-30 hidden w-[126px] overflow-hidden rounded-2xl border border-white/80 bg-white/95 p-1.5 shadow-[0_18px_48px_rgb(15_23_42/25%)] backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/90 sm:block">

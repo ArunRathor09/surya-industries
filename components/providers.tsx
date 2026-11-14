@@ -51,6 +51,8 @@ const copy = {
     heroContact: "For earthing and solar installation, contact us.",
     heroImageAlt: "Illustration of a Surya Power ESE lightning arrester terminal",
     heroProductBadge: "ESE lightning arrester",
+    heroEarthingAlt: "Electrical transmission infrastructure for earthing projects",
+    heroEarthingBadge: "Earthing systems",
     ratedCurrent: "Rated current",
     warranty: "Year warranty",
     scrollExplore: "Scroll to explore",
@@ -140,6 +142,45 @@ const copy = {
       description:
         "From energy and transport to industrial facilities, SPI solutions support demanding environments.",
       cta: "Discuss your application",
+    },
+    aboutSection: {
+      eyebrow: "About Surya Power Industries",
+      title: "A trusted partner in earthing & lightning protection",
+      intro:
+        "Surya Power Industries (SPI) is a manufacturer and supplier of earthing and lightning protection products, serving industrial, commercial and solar applications for more than 12 years.",
+      description:
+        "We help customers select suitable materials and dimensions for their site and project needs. Our focus is dependable products, practical guidance and responsive support—from product selection to solar installation enquiries.",
+      rangeTitle: "Our solutions include",
+      groups: [
+        {
+          title: "Earthing systems",
+          description:
+            "GI, copper, copper-bonded and chemical electrodes, solid rods and earthing compounds.",
+        },
+        {
+          title: "Lightning protection",
+          description:
+            "ESE and conventional arresters, lightning strike counters and installation accessories.",
+        },
+        {
+          title: "Conductors & accessories",
+          description:
+            "GI and copper strips, plates, bare wires, earth-pit covers and cable management.",
+        },
+        {
+          title: "Solar solutions",
+          description:
+            "Solar earthing kits, lightning protection and complete installation support.",
+        },
+      ],
+      cta: "Explore SPI products",
+      imageAlt:
+        "Electrical transmission infrastructure representing SPI earthing and lightning protection solutions",
+      imageCaption: "Protection systems for the infrastructure that powers everyday life.",
+      proofPoints: [
+        { value: "12+", label: "Years serving infrastructure projects" },
+        { value: "200kA", label: "Rated ESE arrester range" },
+      ],
     },
     featuredSolutions: {
       eyebrow: "SPI capabilities",
@@ -427,6 +468,8 @@ const copy = {
     heroContact: "अर्थिंग एवं सोलर लगवाने हेतु सम्पर्क करें",
     heroImageAlt: "सूर्या पावर ESE लाइटनिंग अरेस्टर का चित्र",
     heroProductBadge: "ESE लाइटनिंग अरेस्टर",
+    heroEarthingAlt: "अर्थिंग परियोजनाओं के लिए विद्युत ट्रांसमिशन ढांचा",
+    heroEarthingBadge: "अर्थिंग सिस्टम",
     ratedCurrent: "रेटेड करंट",
     warranty: "वर्ष की वारंटी",
     scrollExplore: "और जानने के लिए स्क्रोल करें",
@@ -516,6 +559,44 @@ const copy = {
       description:
         "ऊर्जा और परिवहन से लेकर औद्योगिक सुविधाओं तक, SPI समाधान कठिन परिस्थितियों के लिए हैं।",
       cta: "अपने उपयोग पर चर्चा करें",
+    },
+    aboutSection: {
+      eyebrow: "सूर्या पावर इंडस्ट्रीज के बारे में",
+      title: "अर्थिंग और लाइटनिंग प्रोटेक्शन में विश्वसनीय सहयोगी",
+      intro:
+        "सूर्या पावर इंडस्ट्रीज (SPI) औद्योगिक, वाणिज्यिक और सोलर उपयोगों के लिए अर्थिंग और लाइटनिंग प्रोटेक्शन उत्पादों का निर्माता और आपूर्तिकर्ता है। इस क्षेत्र में हमें 12 वर्षों से अधिक का अनुभव है।",
+      description:
+        "हम ग्राहकों को उनकी साइट और परियोजना के अनुसार सही सामग्री और आकार चुनने में मदद करते हैं। हमारा ध्यान भरोसेमंद उत्पाद, व्यावहारिक मार्गदर्शन और उत्पाद चयन से सोलर इंस्टॉलेशन तक सहयोग पर है।",
+      rangeTitle: "हमारे समाधान",
+      groups: [
+        {
+          title: "अर्थिंग सिस्टम",
+          description:
+            "GI, कॉपर, कॉपर-बॉन्डेड और केमिकल इलेक्ट्रोड, सॉलिड रॉड और अर्थिंग कंपाउंड।",
+        },
+        {
+          title: "लाइटनिंग प्रोटेक्शन",
+          description:
+            "ESE और पारंपरिक अरेस्टर, लाइटनिंग स्ट्राइक काउंटर और इंस्टॉलेशन एक्सेसरीज़।",
+        },
+        {
+          title: "कंडक्टर और एक्सेसरीज़",
+          description:
+            "GI और कॉपर स्ट्रिप, प्लेट, बेयर वायर, अर्थ-पिट कवर और केबल मैनेजमेंट।",
+        },
+        {
+          title: "सोलर समाधान",
+          description:
+            "सोलर अर्थिंग किट, लाइटनिंग सुरक्षा और संपूर्ण इंस्टॉलेशन सहयोग।",
+        },
+      ],
+      cta: "SPI उत्पाद देखें",
+      imageAlt: "SPI अर्थिंग और लाइटनिंग सुरक्षा समाधानों को दर्शाता विद्युत ट्रांसमिशन ढांचा",
+      imageCaption: "रोज़मर्रा की ऊर्जा को शक्ति देने वाले इंफ्रास्ट्रक्चर के लिए सुरक्षा।",
+      proofPoints: [
+        { value: "12+", label: "इंफ्रास्ट्रक्चर परियोजनाओं का अनुभव" },
+        { value: "200kA", label: "रेटेड ESE अरेस्टर रेंज" },
+      ],
     },
     featuredSolutions: {
       eyebrow: "SPI की क्षमताएं",

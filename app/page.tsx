@@ -1,4 +1,5 @@
 import { CertificationsMarquee } from "@/components/home/certifications-marquee";
+import { AboutSection } from "@/components/home/about-section";
 import { FAQSection } from "@/components/home/faq-section";
 import { FeaturedSolutions } from "@/components/home/featured-solutions";
 import { HomeCTA } from "@/components/home/home-cta";
@@ -16,6 +17,7 @@ export default function HomePage() {
       <Hero />
       <StatsStrip />
       <CertificationsMarquee />
+      <AboutSection />
       <ProtectionCalculator />
       <HowItWorks />
       <FeaturedSolutions />
