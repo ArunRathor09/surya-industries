@@ -126,6 +126,103 @@ export function ProductDetailContent({
         </div>
       </section>
 
+      {product.guideSections && product.guideSections.length > 0 && (
+        <section className="bg-slate-50 px-5 py-12 dark:bg-white/[0.03] sm:px-8 sm:py-16">
+          <div className="mx-auto max-w-7xl space-y-5">
+            {product.guideSections.map((guide) => (
+              <article
+                className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-slate-900 sm:p-7"
+                key={guide.title}
+              >
+                <h2 className="font-heading text-xl font-semibold text-slate-950 dark:text-white">
+                  {guide.title}
+                </h2>
+                {guide.paragraphs?.map((paragraph) => (
+                  <p
+                    className="mt-4 max-w-4xl text-sm leading-7 text-slate-600 dark:text-slate-300"
+                    key={paragraph}
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+                {guide.bullets && (
+                  <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+                    {guide.bullets.map((bullet) => (
+                      <li
+                        className="flex items-start gap-2.5 rounded-xl bg-slate-50 p-3 text-sm leading-6 text-slate-700 dark:bg-white/[0.04] dark:text-slate-300"
+                        key={bullet}
+                      >
+                        <Check
+                          aria-hidden="true"
+                          className="mt-1 size-4 shrink-0 text-brand-orange"
+                        />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {guide.steps && (
+                  <ol className="mt-4 grid gap-2 sm:grid-cols-2">
+                    {guide.steps.map((step, index) => (
+                      <li
+                        className="flex items-start gap-3 rounded-xl bg-slate-50 p-3 text-sm leading-6 text-slate-700 dark:bg-white/[0.04] dark:text-slate-300"
+                        key={step}
+                      >
+                        <span className="grid size-6 shrink-0 place-items-center rounded-full bg-brand-purple/10 text-xs font-bold text-brand-purple dark:bg-white/10 dark:text-orange-300">
+                          {index + 1}
+                        </span>
+                        {step}
+                      </li>
+                    ))}
+                  </ol>
+                )}
+                {guide.table && (
+                  <div className="mt-5 overflow-x-auto rounded-xl border border-slate-200 dark:border-white/10">
+                    <table className="w-full min-w-[560px] text-left text-xs">
+                      <thead className="bg-slate-100 text-slate-600 dark:bg-white/[0.06] dark:text-slate-300">
+                        <tr>
+                          {guide.table.headers.map((header) => (
+                            <th className="px-4 py-3 font-semibold" key={header}>
+                              {header}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                        {guide.table.rows.map((row) => (
+                          <tr className="text-slate-700 dark:text-slate-300" key={row.join("-")}>
+                            {row.map((cell, index) =>
+                              index === 0 ? (
+                                <th
+                                  className="px-4 py-3 font-semibold"
+                                  key={`${index}-${cell}`}
+                                  scope="row"
+                                >
+                                  {cell}
+                                </th>
+                              ) : (
+                                <td className="px-4 py-3" key={`${index}-${cell}`}>
+                                  {cell}
+                                </td>
+                              ),
+                            )}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+                {guide.note && (
+                  <p className="mt-4 rounded-xl border border-orange-200/70 bg-orange-50/70 px-4 py-3 text-xs leading-6 text-slate-700 dark:border-orange-300/15 dark:bg-orange-300/[0.06] dark:text-slate-300">
+                    {guide.note}
+                  </p>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
       {product.protectionRadius && (
         <section className="bg-slate-50 px-5 py-12 dark:bg-white/[0.03] sm:px-8 sm:py-16">
           <div className="mx-auto max-w-7xl">

@@ -10,6 +10,18 @@ export type ProductSpec = {
   value: string;
 };
 
+export type ProductGuideSection = {
+  title: string;
+  paragraphs?: string[];
+  bullets?: string[];
+  steps?: string[];
+  table?: {
+    headers: string[];
+    rows: string[][];
+  };
+  note?: string;
+};
+
 export type ProtectionRadiusRow = {
   height: number;
   level1: number;
@@ -27,6 +39,7 @@ export type Product = {
   description: string;
   specifications: ProductSpec[];
   features: string[];
+  guideSections?: ProductGuideSection[];
   applications?: string[];
   image: string;
   imageAlt: string;
@@ -79,6 +92,40 @@ export const products: Product[] = [
       "Testable with iTorrent testers",
       "20-year manufacturer warranty",
       "Tested per NFC 17-102/2011 (DeltaT advance time test, current withstand test)",
+    ],
+    guideSections: [
+      {
+        title: "Operating principle",
+        paragraphs: [
+          "The ESE terminal described in the supplied SPI material uses an ion-generation system to encourage an upward streamer during a thunderstorm. Its purpose is to provide a designated interception point; the lightning current still needs a correctly designed down-conductor and earth-termination path.",
+        ],
+        steps: [
+          "Ambient electric charge builds around the terminal during storm conditions.",
+          "The ESE unit emits an upward streamer earlier, as described by its tested advance-time rating.",
+          "The terminal intercepts a strike within the designed protection zone.",
+          "Down conductors and the earthing system route current safely toward the ground.",
+        ],
+        note: "Protection depends on site layout, installation height, bonding, down-conductor routing, earthing and the applicable design standard. A terminal does not guarantee that lightning will not strike.",
+      },
+      {
+        title: "ESE and conventional air terminals",
+        table: {
+          headers: ["Consideration", "ESE terminal", "Conventional terminal"],
+          rows: [
+            ["Operating approach", "Active early-streamer-emission design", "Passive air-terminal design"],
+            ["Design reference", "NFC 17-102/2011", "IEC 62305 design method"],
+            ["Protection zone", "Calculated using validated advance time, height and protection level", "Calculated from terminal geometry, height and protection level"],
+            ["Installation", "Requires down conductors and a coordinated earth termination", "Requires down conductors and a coordinated earth termination"],
+          ],
+        },
+        bullets: [
+          "Protection radius depends on mounting height above the protected structure.",
+          "Protection level (I–IV) changes the radius calculation.",
+          "For ESE designs, the tested advance time (ΔT/AT) is a key input.",
+          "Product and installation cost depend on the selected system and project; compare complete designs, not only terminal prices.",
+        ],
+        note: "Use calculations permitted by the project standard and have the final protection design reviewed by a qualified lightning-protection professional.",
+      },
     ],
     applications: [
       "High-rise buildings",
@@ -165,6 +212,22 @@ export const products: Product[] = [
       "Testable with ORBITAL testers",
       "20-year warranty",
     ],
+    guideSections: [
+      {
+        title: "Product identification and supplied reference notes",
+        paragraphs: [
+          "The SPI product in this catalogue is the stainless-steel Sigmatech ESE terminal described by the specifications above. The supplied notes also include information about a separate third-party Sigmatech automation vendor and electrical surge-protection devices. That material does not establish an SPI affiliation, product equivalence or SPI specification.",
+          "General third-party selection references mention Type 1/Class B devices, coordinated B+C protection, spark-gap modules, MOV components and indicators. These are electrical surge-protection devices and are not the same product as an ESE roof terminal.",
+        ],
+        bullets: [
+          "For a separate electrical surge-protection device, confirm the system topology (such as TN-S, TT or IT) and applicable standard.",
+          "Check device type, impulse current waveform/rating and coordination between upstream and downstream protection.",
+          "Confirm any isolator, status indicator, follow-current limitation or voltage-protection rating against the exact manufacturer datasheet.",
+          "The supplied third-party notes reference DIN EN 61643-11, VDE and IEC; verify current editions and certificates for the selected device.",
+        ],
+        note: "The third-party company profile, model claims and external references in the supplied text are not independently verified and must not be used as SPI product claims. Select electrical SPDs separately from structural lightning air terminals.",
+      },
+    ],
     image: "/products/surya-power-sigmatech-lightning-arrester.jpg",
     imageAlt: "Placeholder image for Surya Power Sigmatech lightning arrester",
   },
@@ -181,7 +244,15 @@ export const products: Product[] = [
       { label: "Display", value: "6-digit" },
       { label: "Count range", value: "0–999999" },
       { label: "Current sensitivity", value: "300A (8/20µs)" },
+      {
+        label: "Alternate sensitivity in supplied notes",
+        value: "500A (8/20µs) is also listed; verify the exact model datasheet",
+      },
       { label: "Operating range", value: "1500A to 200kA" },
+      {
+        label: "Impulse waveform note",
+        value: "Supplementary notes cite an 8/20µs measurement; confirm the rating and test waveform for the model",
+      },
       { label: "Ingress protection", value: "IP67 waterproof" },
       { label: "Operating temperature", value: "-40 to +85°C" },
       { label: "Humidity", value: "≤95%" },
@@ -189,8 +260,31 @@ export const products: Product[] = [
       { label: "Weight", value: "0.67 kg" },
       { label: "Mounting", value: "6–10 mm cable or 50 x 5 mm tape" },
       { label: "Warranty", value: "5 years" },
+      {
+        label: "Display note",
+        value: "The supplied notes also mention an 8-digit screen; the 0–999999 count range is six digits, so confirm the display specification",
+      },
     ],
-    features: ["Waterproof enclosure", "Six-digit event display", "5-year warranty"],
+    features: [
+      "Waterproof enclosure",
+      "Six-digit event display",
+      "5-year warranty",
+      "Suitable for monitoring strike activity and supporting inspection or maintenance records",
+    ],
+    guideSections: [
+      {
+        title: "How a strike counter records events",
+        paragraphs: [
+          "Lightning counters detect the surge current on a down conductor and increment a stored event count. Common counter designs may use a current transformer, Rogowski coil or Hall-effect sensor, followed by signal conditioning and a display/counter circuit; the exact sensing method depends on the selected model.",
+        ],
+        bullets: [
+          "Some advanced counters may include event timestamps, non-volatile logs, tamper-resistant enclosures or communications such as RS-485, GSM or LoRa.",
+          "Power options can vary across models; battery or solar-powered variants mentioned in general notes are not confirmed for this SPI counter.",
+          "Use a compatible current path and mounting position as specified in the product instructions.",
+        ],
+        note: "The supplied product notes conflict on display digits (six versus eight) and sensitivity (300A versus 500A). The 0–999999 count range supports six displayed digits; confirm the exact sensor threshold and display against the model datasheet before ordering.",
+      },
+    ],
     image: "/products/digital-lightning-strike-counter.jpg",
     imageAlt: "Placeholder image for digital lightning strike counter",
   },

@@ -109,7 +109,7 @@ export function AboutSection() {
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/5 to-transparent"
             />
-            <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 sm:inset-x-7 sm:bottom-7">
+            <div className="absolute inset-x-5 bottom-28 flex items-end justify-between gap-4 sm:inset-x-7 sm:bottom-32">
               <p className="max-w-[15rem] font-heading text-lg font-semibold leading-snug text-white sm:text-xl">
                 {text.aboutSection.imageCaption}
               </p>
