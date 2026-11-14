@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="620" viewBox="0 0 620 620" fill="none">
+  <defs>
+    <linearGradient id="steel" x1="242" y1="113" x2="382" y2="493" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff"/>
+      <stop offset=".18" stop-color="#9ca3af"/>
+      <stop offset=".34" stop-color="#f8fafc"/>
+      <stop offset=".54" stop-color="#717783"/>
+      <stop offset=".72" stop-color="#e5e7eb"/>
+      <stop offset="1" stop-color="#555b66"/>
+    </linearGradient>
+    <linearGradient id="copper" x1="264" y1="234" x2="357" y2="392" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffe4bd"/>
+      <stop offset=".28" stop-color="#f58220"/>
+      <stop offset=".62" stop-color="#ae4f0e"/>
+      <stop offset="1" stop-color="#ffd097"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="matrix(0 249 -249 0 310 325)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f58220" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#f58220" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="143" y="46" width="334" height="531" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+  <circle cx="310" cy="310" r="249" fill="url(#glow)"/>
+  <ellipse cx="311" cy="523" fill="#030712" fill-opacity=".72" rx="112" ry="20" filter="url(#shadow)"/>
+  <g stroke="#cbd5e1" stroke-opacity=".45">
+    <circle cx="310" cy="310" r="235"/>
+    <circle cx="310" cy="310" r="193" stroke-dasharray="3 9"/>
+  </g>
+  <g stroke-linejoin="round">
+    <path d="M270 449h80l30 25v24H240v-24l30-25Z" fill="url(#steel)" stroke="#f8fafc" stroke-opacity=".65" stroke-width="2"/>
+    <path d="M252 474h116v17H252z" fill="#555b66" stroke="#f8fafc" stroke-opacity=".5" stroke-width="2"/>
+    <path d="M288 412h44v42h-44z" fill="url(#steel)" stroke="#f8fafc" stroke-opacity=".65" stroke-width="2"/>
+    <path d="M257 385h106v28H257z" fill="url(#copper)" stroke="#ffedd5" stroke-opacity=".6" stroke-width="2"/>
+    <path d="M268 350h84v36h-84z" fill="url(#steel)" stroke="#fff" stroke-opacity=".6" stroke-width="2"/>
+    <path d="M248 333h124v18H248z" fill="url(#steel)" stroke="#f8fafc" stroke-opacity=".55" stroke-width="2"/>
+    <path d="M268 301h84v32h-84z" fill="url(#copper)" stroke="#ffedd5" stroke-opacity=".6" stroke-width="2"/>
+    <path d="M277 267h66v35h-66z" fill="url(#steel)" stroke="#fff" stroke-opacity=".7" stroke-width="2"/>
+    <path d="M285 231h50v37h-50z" fill="url(#copper)" stroke="#ffedd5" stroke-opacity=".65" stroke-width="2"/>
+    <path d="m310 82-33 150h66L310 82Z" fill="url(#steel)" stroke="#fff" stroke-opacity=".85" stroke-width="2"/>
+    <path d="M310 82v375" stroke="#fff" stroke-opacity=".55" stroke-width="2"/>
+    <path d="M268 455h84M258 393h104M273 308h74M284 239h52" stroke="#fff" stroke-opacity=".42" stroke-width="2"/>
+    <path d="m310 128-7 28h13l-11 24 6-20h-13l12-32Z" fill="#fff" fill-opacity=".9"/>
+  </g>
+  <g fill="#e2e8f0" font-family="Arial,sans-serif" text-anchor="middle">
+    <text x="310" y="552" font-size="12" letter-spacing="3">ESE LIGHTNING TERMINAL</text>
+    <text x="310" y="572" fill="#fb923c" font-size="9" letter-spacing="2">PRODUCT ILLUSTRATION · REPLACE WITH PHOTO</text>
+  </g>
+</svg>
