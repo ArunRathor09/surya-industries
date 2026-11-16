@@ -1,0 +1,8 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/page": "/",
+  "/products/[slug]/page": "/products/[slug]",
+  "/services/[slug]/page": "/services/[slug]",
+  "/products/page": "/products",
+  "/services/page": "/services"
+}

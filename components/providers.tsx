@@ -149,7 +149,7 @@ const copy = {
       intro:
         "Surya Power Industries (SPI) is a manufacturer and supplier of earthing and lightning protection products, serving industrial, commercial and solar applications for more than 12 years.",
       description:
-        "We help customers select suitable materials and dimensions for their site and project needs. Our focus is dependable products, practical guidance and responsive support—from product selection to solar installation enquiries.",
+        "Our goal is to offer reliable products at competitive prices and help customers choose the right material and size for their needs. We focus on quality, expert guidance, dependable service and customer satisfaction—from product selection to solar installation enquiries.",
       rangeTitle: "Our solutions include",
       groups: [
         {
@@ -566,7 +566,7 @@ const copy = {
       intro:
         "सूर्या पावर इंडस्ट्रीज (SPI) औद्योगिक, वाणिज्यिक और सोलर उपयोगों के लिए अर्थिंग और लाइटनिंग प्रोटेक्शन उत्पादों का निर्माता और आपूर्तिकर्ता है। इस क्षेत्र में हमें 12 वर्षों से अधिक का अनुभव है।",
       description:
-        "हम ग्राहकों को उनकी साइट और परियोजना के अनुसार सही सामग्री और आकार चुनने में मदद करते हैं। हमारा ध्यान भरोसेमंद उत्पाद, व्यावहारिक मार्गदर्शन और उत्पाद चयन से सोलर इंस्टॉलेशन तक सहयोग पर है।",
+        "हमारा उद्देश्य उचित कीमतों पर भरोसेमंद उत्पाद देना और ग्राहकों को सही सामग्री और आकार चुनने में मदद करना है। हमारा ध्यान गुणवत्ता, विशेषज्ञ मार्गदर्शन, विश्वसनीय सेवा और ग्राहक संतुष्टि पर है—उत्पाद चयन से सोलर इंस्टॉलेशन तक।",
       rangeTitle: "हमारे समाधान",
       groups: [
         {

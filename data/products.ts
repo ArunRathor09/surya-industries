@@ -122,6 +122,8 @@ export const products: Product[] = [
           "Protection radius depends on mounting height above the protected structure.",
           "Protection level (I–IV) changes the radius calculation.",
           "For ESE designs, the tested advance time (ΔT/AT) is a key input.",
+          "ESE advance-time examples in the supplied notes include 15, 30, 45 and 60 µs; use the tested value for the exact terminal.",
+          "Some supplied material references UNE 21186 as well as NFC 17-102; confirm which standard is accepted for the project.",
           "Product and installation cost depend on the selected system and project; compare complete designs, not only terminal prices.",
         ],
         note: "Use calculations permitted by the project standard and have the final protection design reviewed by a qualified lightning-protection professional.",
@@ -223,6 +225,7 @@ export const products: Product[] = [
           "For a separate electrical surge-protection device, confirm the system topology (such as TN-S, TT or IT) and applicable standard.",
           "Check device type, impulse current waveform/rating and coordination between upstream and downstream protection.",
           "Confirm any isolator, status indicator, follow-current limitation or voltage-protection rating against the exact manufacturer datasheet.",
+          "The supplied third-party notes describe some combined B+C devices as using MOV components and claim voltage limitation below 1.5 kV at 50 kA; this is unverified third-party information and must be checked against the exact device certificate.",
           "The supplied third-party notes reference DIN EN 61643-11, VDE and IEC; verify current editions and certificates for the selected device.",
         ],
         note: "The third-party company profile, model claims and external references in the supplied text are not independently verified and must not be used as SPI product claims. Select electrical SPDs separately from structural lightning air terminals.",
@@ -270,6 +273,7 @@ export const products: Product[] = [
       "Six-digit event display",
       "5-year warranty",
       "Suitable for monitoring strike activity and supporting inspection or maintenance records",
+      "Testable with compatible SPI testing units as stated in the supplied notes",
     ],
     guideSections: [
       {
@@ -280,6 +284,7 @@ export const products: Product[] = [
         bullets: [
           "Some advanced counters may include event timestamps, non-volatile logs, tamper-resistant enclosures or communications such as RS-485, GSM or LoRa.",
           "Power options can vary across models; battery or solar-powered variants mentioned in general notes are not confirmed for this SPI counter.",
+          "The supplied material also mentions remote logging, maintenance scheduling and insurance/safety monitoring as general counter uses.",
           "Use a compatible current path and mounting position as specified in the product instructions.",
         ],
         note: "The supplied product notes conflict on display digits (six versus eight) and sensitivity (300A versus 500A). The 0–999999 count range supports six displayed digits; confirm the exact sensor threshold and display against the model datasheet before ordering.",
@@ -301,6 +306,10 @@ export const products: Product[] = [
       { label: "Standard", value: "IEC 62305" },
       { label: "Type", value: "Conventional" },
       { label: "Materials", value: "Pure copper / copper bonded / hollow copper" },
+      {
+        label: "Copper purity on bonded spike variants",
+        value: "99.9% is cited in supplied notes; verify material certification for the selected model",
+      },
       { label: "Solid rod sizes", value: "16 mm diameter, 1 m or 2 m" },
       { label: "Hollow pipe sizes", value: "25 mm diameter, 1 m or 2 m" },
       {
@@ -319,6 +328,21 @@ export const products: Product[] = [
       "Telecommunication towers",
       "Industrial plants and power substations",
       "Solar panel installations",
+    ],
+    guideSections: [
+      {
+        title: "Conventional air-terminal installation",
+        paragraphs: [
+          "A conventional spike terminal is mounted at an appropriate high point and bonded to a down conductor and earth-termination system. The pointed air terminal intercepts a strike; it does not by itself provide a complete lightning-protection system.",
+        ],
+        bullets: [
+          "Copper-bonded variants combine a steel core with a copper coating; selected supplied notes cite a 250–300 micron layer.",
+          "Common product formats in the supplied notes are 16 mm solid rods and 25 mm hollow pipes in 1 m or 2 m lengths.",
+          "The conductor route, bonding, joints and earth termination must be designed as one system.",
+          "The supplied material references IEC 62305; confirm the current project standard and the terminal’s documented compliance.",
+        ],
+        note: "The coating thickness, material, length and standard should be confirmed for the exact SKU. A lightning-protection designer must determine terminal positions and protection zones.",
+      },
     ],
     image: "/products/copper-lightning-arrester.jpg",
     imageAlt: "Placeholder image for copper lightning arrester",
@@ -370,6 +394,21 @@ export const products: Product[] = [
       "NABL & CPRI tested",
       "Copper bonding combines a mechanically strong steel core with a corrosion-resistant surface",
     ],
+    guideSections: [
+      {
+        title: "Construction and selection",
+        paragraphs: [
+          "A copper-bonded rod uses a low-carbon or mild-steel core with electrolytically bonded copper. The steel provides mechanical strength while the copper surface provides conductivity and corrosion resistance. Copper purity and coating adhesion should be verified from the product certificate.",
+        ],
+        bullets: [
+          "Supplementary notes cite common lengths of 1.2 m, 1.5 m, 2.4 m and 3 m in addition to the 1 m, 2 m and 3 m catalogue options.",
+          "Choose the rod diameter and length for the soil, mechanical conditions and earthing design.",
+          "Related accessories may include U-bolt or G-clamps, ground-enhancement material, earth-pit covers and exothermic-welding kits; confirm what is included in the SPI quotation.",
+          "The supplied notes refer to IEEE 80, UL 467, BS 7430 and IS 3043. Applicable standards depend on the project and product certification.",
+        ],
+        note: "Size ranges and standards are selection references, not a substitute for checking current SPI stock, certificates and project specifications.",
+      },
+    ],
     image: "/products/copper-bonded-solid-earth-rod.jpg",
     imageAlt: "Placeholder image for copper bonded solid earth rod",
   },
@@ -409,6 +448,21 @@ export const products: Product[] = [
       "High-rise buildings",
       "Hospitals and sensitive electronics systems",
     ],
+    guideSections: [
+      {
+        title: "Electrode construction and benefits",
+        paragraphs: [
+          "The supplied description uses a steel core molecularly bonded with high-purity electrolytic copper. A copper-coated inner flat electrode and crystalline conductive backfill are used in the chemical-electrode configuration to support conductivity and moisture retention.",
+        ],
+        bullets: [
+          "Copper coating is specified at 100–250 microns, with 15+ years durability cited in the product notes.",
+          "Common diameters listed across the supplied notes include 48 mm, 58 mm and 76–100 mm; standard SPI product data lists 48 mm and 76 mm. Verify the available model.",
+          "Conductive backfill may use bentonite, graphite or carbon-based formulations; confirm that the selected compound is non-corrosive and compatible.",
+          "The intended benefits are corrosion resistance, low-maintenance operation and consistent dissipation in suitable soil conditions.",
+        ],
+        note: "Actual earth resistance depends on soil, electrode geometry, compound and installation. It must be measured and verified at the site.",
+      },
+    ],
     image: "/products/copper-bonded-chemical-earth-electrode.jpg",
     imageAlt: "Placeholder image for copper bonded chemical earth electrode",
   },
@@ -446,6 +500,22 @@ export const products: Product[] = [
       "Power substations and distribution networks",
       "Solar power systems",
       "Industrial electrical installations",
+    ],
+    guideSections: [
+      {
+        title: "Construction, installation and applications",
+        paragraphs: [
+          "GI earth electrodes are supplied as solid rods or pipe-style electrodes. Some pipe designs include punched holes or slots to increase contact area or allow moisture and compatible backfill to distribute around the electrode. The supplied SPI range also includes moisture-booster bags on selected models.",
+        ],
+        bullets: [
+          "Galvanized zinc coating is intended to improve resistance to corrosion caused by soil and moisture.",
+          "The supplied notes cite 25–50 mm diameters and 2–3 m lengths as typical; the SPI catalogue separately lists 48, 58 and 76 mm diameters and 1, 2 and 3 m lengths.",
+          "An electrode can be installed vertically or horizontally when the site-specific design calls for it.",
+          "Connect the electrode to the grounding conductor using a compatible connection and follow the electrical design and applicable local code.",
+          "Typical uses include homes, offices, industrial sites, substations, distribution networks and solar installations.",
+        ],
+        note: "Dimensions, construction type and corrosion performance vary by model and soil conditions. Confirm the offered variant and applicable standard with SPI.",
+      },
     ],
     image: "/products/gi-earth-electrode.jpg",
     imageAlt: "Placeholder image for GI earth electrode",
@@ -494,6 +564,29 @@ export const products: Product[] = [
       "Lightning protection systems",
       "Industrial and commercial buildings",
     ],
+    guideSections: [
+      {
+        title: "GI chemical electrode construction",
+        paragraphs: [
+          "A typical GI chemical electrode is a galvanized pipe with openings to distribute moisture and compatible backfill. Selected models may include an inner strip or conductor. The surrounding compound is used to retain moisture and help stabilize soil resistance, particularly in high-resistivity or rocky ground.",
+        ],
+        table: {
+          headers: ["Typical pipe diameter", "Typical length", "Wall thickness in supplied notes", "Use noted"],
+          rows: [
+            ["48 mm", "1.5–3 m", "3.2 mm", "Light-duty / residential"],
+            ["58 mm", "2–3 m", "3.2–4 mm", "Industrial / commercial"],
+            ["76–100 mm", "3 m", "4 mm or more", "Heavy-duty / substations"],
+          ],
+        },
+        bullets: [
+          "Traditional backfills may contain bentonite, charcoal and salt; modern conductive compounds may be designed to avoid leaching. Salt-bearing mixes can affect corrosion, so use only a compatible product specified for the electrode.",
+          "Benefits sought include easier installation, moisture retention, reduced upkeep and more stable performance in dry or rocky soil.",
+          "Applications include panels, transformers, data centres, telecom towers, lightning-protection systems and industrial or commercial buildings.",
+          "The supplied notes reference IS 3043 and relevant IEC/IEEE standards; check which current standard applies to the installation.",
+        ],
+        note: "Sizes in this table are typical values from the supplied notes, not a guarantee of SPI availability. Confirm model, wall thickness and backfill instructions before installation.",
+      },
+    ],
     image: "/products/gi-chemical-earth-electrode.jpg",
     imageAlt: "Placeholder image for GI chemical earthing electrode",
   },
@@ -507,6 +600,10 @@ export const products: Product[] = [
       "Pure copper earthing electrodes designed for straightforward installation and suitability in soil pH 5.0–8.0.",
     specifications: [
       { label: "Material", value: "100% copper (99.9% electrolytic grade)" },
+      { label: "Construction", value: "Solid rod or tubular / chemical-filled variants, depending on model" },
+      { label: "Inner filling", value: "Crystalline or carbon-based conductive compound on selected models" },
+      { label: "Terminal connection", value: "Copper strip or compatible clamp; confirm included hardware" },
+      { label: "Coating", value: "None; pure copper construction" },
       { label: "Diameters", value: "48 mm and 76 mm" },
       {
         label: "Additional typical diameters",
@@ -534,6 +631,31 @@ export const products: Product[] = [
       "Industrial and commercial buildings",
       "Power generation plants",
       "Lightning protection systems",
+    ],
+    guideSections: [
+      {
+        title: "Pure copper chemical electrode details",
+        paragraphs: [
+          "The supplied notes describe pure copper chemical electrodes as tubular or solid conductors that can use crystalline or carbon-based conductive filling. Copper’s conductivity and corrosion resistance are intended to support long-term performance in suitable soil conditions. A copper strip or clamp may be used for the terminal connection.",
+        ],
+        table: {
+          headers: ["Consideration", "Pure copper", "Copper-bonded rod", "GI electrode"],
+          rows: [
+            ["Conductor", "Copper throughout", "Copper layer over steel core", "Galvanized iron"],
+            ["Conductivity", "Very high", "High copper surface conductivity", "Suitable for designed earthing systems"],
+            ["Corrosion / service life", "High corrosion resistance; 20–30+ years cited in supplied notes", "15+ years cited in SPI notes", "Depends on zinc coating and soil conditions"],
+            ["Selection focus", "Cost, soil chemistry and life-cycle requirements", "Coating integrity and mechanical strength", "Coating, soil and maintenance requirements"],
+          ],
+        },
+        bullets: [
+          "Typical dimensions in the supplied notes include 40 mm, 50 mm and 80 mm, while SPI catalogue data lists 48 mm and 76 mm; custom dimensions are subject to confirmation.",
+          "Selected terminal arrangements use a copper strip or clamp. Confirm the connection hardware and whether the model is solid or chemical-filled.",
+          "A resistance below 1 ohm is mentioned as a typical target, but measured resistance depends on soil and the complete earthing design.",
+          "Some supplied notes cite a 20–30+ year service life for pure copper; environmental conditions, installation quality and maintenance affect actual life.",
+          "Typical applications include data centres, telecom towers, commercial and industrial buildings, power plants and lightning-protection systems.",
+        ],
+        note: "The supplied notes compare pure copper with GI and copper-bonded rods. Final material selection should consider soil chemistry, mechanical strength, required service life, cost and the project specification.",
+      },
     ],
     image: "/products/pure-copper-earth-electrode.jpg",
     imageAlt: "Placeholder image for pure copper earth electrode",
@@ -571,6 +693,26 @@ export const products: Product[] = [
       "Solar and wind farms",
       "Industrial plants and data centres",
     ],
+    guideSections: [
+      {
+        title: "Backfill compound types and use",
+        paragraphs: [
+          "Earthing backfill compound (BFC) is placed around an earth electrode to improve the conductive path, retain moisture and help reduce soil resistivity. SPI Guard Advance is the graphite-based SPI product described in the product information above; other general market formulations include bentonite, carbon, cement-based and proprietary conductive mixtures.",
+        ],
+        steps: [
+          "Excavate the earth pit or trench to the dimensions in the approved design.",
+          "Position the electrode and make the specified electrical connection.",
+          "Place the compatible backfill uniformly around the electrode; 100–150 mm surrounding thickness is mentioned in the supplied notes as a typical method.",
+          "Add water only when the compound instructions require it, then close and protect the pit.",
+        ],
+        bullets: [
+          "BFC is used at power stations, substations, telecom sites, solar and wind farms, industrial plants and data centres.",
+          "The supplied notes cite IS 3043:2018 and IEEE references; confirm current requirements for the project.",
+          "Pack sizes of 15 kg and 25 kg are in the SPI product notes; a 50 kg bag is mentioned in supplementary notes and requires availability confirmation.",
+        ],
+        note: "Compound chemistry and activation requirements differ. Follow the selected product data sheet and site design; do not add water or salts unless explicitly required by the manufacturer.",
+      },
+    ],
     image: "/products/surya-power-backfill-compound.jpg",
     imageAlt: "Placeholder image for Surya Power backfill compound",
   },
@@ -585,10 +727,39 @@ export const products: Product[] = [
     specifications: [
       { label: "Finish", value: "Hot dip galvanized" },
       { label: "Zinc coating", value: "Minimum 86 microns" },
+      {
+        label: "Supplementary coating reference",
+        value: "80–120 microns is cited in supplied notes; verify the batch requirement and test certificate",
+      },
       { label: "Service life", value: "Up to 15 years" },
       { label: "Sizes", value: "25x3, 25x6, 50x3, 50x6, 100x6, 100x12 mm" },
     ],
-    features: ["Corrosion-resistant zinc coating", "Multiple strip sizes"],
+    features: [
+      "Hot-dip zinc coating helps protect the strip against corrosion",
+      "Multiple strip widths and thicknesses",
+      "Long service life with minimal maintenance when installed in suitable conditions",
+    ],
+    applications: [
+      "Electrical panels and transformer earthing",
+      "Lightning protection systems",
+      "Substations and power plants",
+      "Communication towers",
+    ],
+    guideSections: [
+      {
+        title: "GI strip use and specification",
+        paragraphs: [
+          "GI (galvanized iron) strip is a flat conductor with a zinc coating used to connect earthing points and safely carry fault current into the grounding network.",
+        ],
+        bullets: [
+          "Sizes listed for SPI are 25x3, 25x6, 50x3, 50x6, 100x6 and 100x12 mm.",
+          "Supplementary notes cite 80–120 micron zinc coating and up to 15 years of service life; the project specification separately sets a minimum 86 microns.",
+          "Relevant references in the supplied notes include IS 3043, IS 2629, IEEE and IEC; verify the correct standard and coating test for the job.",
+          "Common uses include electrical panels, transformers, lightning systems, substations, power plants and communication towers.",
+        ],
+        note: "Coating thickness and service life depend on the exact product, exposure and installation environment. Confirm the ordered batch certificate.",
+      },
+    ],
     image: "/products/gi-strips.jpg",
     imageAlt: "Placeholder image for GI earthing strips",
   },
@@ -611,6 +782,27 @@ export const products: Product[] = [
       { label: "Applications", value: "LV / MV / HV substations" },
     ],
     features: ["Corrosion resistant", "EC-grade copper"],
+    applications: [
+      "Electrical substations",
+      "Transformers and power plants",
+      "Lightning protection and earthing networks",
+      "Industrial and commercial installations",
+    ],
+    guideSections: [
+      {
+        title: "Copper strip construction and applications",
+        paragraphs: [
+          "Copper earthing strips are flat conductors used to bond equipment and provide a low-resistance path for fault current. EC-grade copper with 99.9% purity is specified in the product notes.",
+        ],
+        bullets: [
+          "SPI catalogue range: 25x3 mm to 100x10 mm. Supplementary notes cite widths of 20–100 mm and thicknesses of 2–10 mm.",
+          "Finish options mentioned include bare copper, tinned copper or PVC-coated copper, depending on corrosion and installation requirements.",
+          "Copper provides high conductivity and corrosion resistance for substations, transformers, power plants, lightning systems and data centres.",
+          "The supplied standards references include IS 3043, IEC 62561, BS 7430 and IEEE; select the standard required by the project.",
+        ],
+        note: "Confirm strip dimensions, finish, current-carrying requirement and certificate for the exact order.",
+      },
+    ],
     image: "/products/copper-earthing-strip.jpg",
     imageAlt: "Placeholder image for copper earthing strip",
   },
@@ -653,6 +845,22 @@ export const products: Product[] = [
       "Telecommunication towers",
       "Solar installations and industrial facilities",
     ],
+    guideSections: [
+      {
+        title: "Materials, load ratings and access",
+        paragraphs: [
+          "An earth-pit cover protects the electrode connection and pit from debris, accidental access and tampering while keeping the inspection point accessible. The SPI sizes and materials are listed in the specifications above.",
+        ],
+        bullets: [
+          "General cover materials in the supplied notes include concrete, cast iron, FRP, PVC/plastic, HDPE and polymer.",
+          "Load rating must suit the location: pedestrian areas and vehicle routes require different cover classes.",
+          "Covers may have lifting hooks or handles; lockable designs are available on some products.",
+          "Common installations include substations, buildings, telecom towers, solar sites and industrial facilities.",
+          "A correctly selected cover helps keep water or debris out and reduces the chance of accidental contact with pit components.",
+        ],
+        note: "Material, dimensions, fixing type and load-bearing capacity differ by model. Confirm the exact cover class for the intended location.",
+      },
+    ],
     image: "/products/earthing-pit-covers.jpg",
     imageAlt: "Placeholder image for earthing pit covers",
   },
@@ -686,6 +894,27 @@ export const products: Product[] = [
       "Residential and commercial buildings",
       "Communication towers and data centres",
       "Power generation plants",
+    ],
+    guideSections: [
+      {
+        title: "Installation and connection considerations",
+        paragraphs: [
+          "Copper earthing plates provide a broad conductive electrode surface. The supplied notes cite typical plate sizes of 300x300 mm or 600x600 mm and thicknesses of 3–6 mm; confirm exact SPI availability and project requirements.",
+        ],
+        steps: [
+          "Select plate dimensions, thickness and connection method in the earthing design.",
+          "Bury the plate vertically or horizontally in the designed pit; 1.5–3 m pit depth is cited as typical in the supplied notes, but the design determines the actual depth.",
+          "Connect the plate using a compatible copper strip, cable, lug or bolted connection.",
+          "Use specified conductive backfill and moisture provisions where required by the design.",
+          "Measure and record earth resistance after installation and verify it against the project criteria.",
+        ],
+        bullets: [
+          "Copper purity of 99.9% is preferred in the supplied description for conductivity and corrosion resistance.",
+          "Typical applications include substations, homes and commercial buildings, communication towers, data centres and power plants.",
+          "The supplied notes refer to copper plates surrounded by bentonite, charcoal or other conductive compounds; use only the compound approved for the selected design.",
+        ],
+        note: "These are general installation considerations, not a site-specific design. Follow the project drawings, applicable code and product instructions.",
+      },
     ],
     image: "/products/copper-earthing-plate.jpg",
     imageAlt: "Placeholder image for copper earthing plate",
@@ -750,6 +979,30 @@ export const products: Product[] = [
       "Grid-tied, off-grid and hybrid systems, subject to project design",
       "Solar companies requiring earthing support",
     ],
+    guideSections: [
+      {
+        title: "Solar installation process",
+        paragraphs: [
+          "SPI solar service enquiries can cover site assessment, system planning and installation. The final scope depends on the site, energy use, utility requirements and selected equipment.",
+        ],
+        steps: [
+          "Assess roof or ground conditions, orientation, shading and available solar exposure.",
+          "Review electricity bills and energy consumption; a south-facing orientation is often favorable in the northern hemisphere, but shading and site layout determine the final array direction.",
+          "Decide whether the project is grid-tied, off-grid or hybrid.",
+          "Design the system around the selected panels, inverter, mounting, cabling, protection, optional batteries and monitoring.",
+          "Coordinate applicable permissions, utility approvals and grid-connection requirements.",
+          "Install mounting, panels, inverter, wiring and specified earthing/lightning-protection components.",
+          "Complete inspection, testing, commissioning and handover according to the agreed project scope.",
+        ],
+        bullets: [
+          "System components may include solar modules, inverter, racking, DC/AC wiring, optional battery storage and monitoring.",
+          "Maintenance commonly includes periodic cleaning and checking system output; follow the component manufacturer's instructions.",
+          "The supplied notes cite a 25–30 year typical solar-module life; warranties vary by manufacturer and product.",
+          "Solar installation cost is project-specific and may be quoted per watt after site and scope review. Incentives and net-metering rules depend on local policy and utility approval.",
+        ],
+        note: "SPI's exact service scope, equipment supply, approvals, cost and warranties must be confirmed in a project quotation. No generation or savings estimate is guaranteed without a site-specific assessment.",
+      },
+    ],
     image: "/products/solar-earthing-kit.jpg",
     imageAlt: "Placeholder image for solar earthing kit and installation service",
   },
@@ -780,6 +1033,20 @@ export const products: Product[] = [
       "Lightning protection systems",
       "Automotive, marine and industrial installations",
     ],
+    guideSections: [
+      {
+        title: "Conductor formats and sizing",
+        paragraphs: [
+          "Bare copper wire has no insulation or protective outer covering. It can be supplied as a solid single conductor or as multiple stranded wires for added flexibility. Copper is highly conductive and recyclable.",
+        ],
+        bullets: [
+          "The supplied notes give 8, 10 and 12 AWG as example gauges; these are examples, not a complete SPI size list.",
+          "Select wire gauge or cross-sectional area for fault-current duty, installation method, mechanical strength and applicable code.",
+          "Typical uses include grounding, electrical bonding, construction, automotive or marine work and lightning-protection connections.",
+        ],
+        note: "Confirm copper grade, conductor size and certification with SPI before ordering; never infer a conductor's fault rating from gauge alone.",
+      },
+    ],
     image: "/products/bare-copper-wire.jpg",
     imageAlt: "Illustration placeholder for bare copper earthing wire",
   },
@@ -807,6 +1074,20 @@ export const products: Product[] = [
       "Construction binding and fencing",
       "General utility applications",
       "Selected electrical grounding and bonding uses, subject to design",
+    ],
+    guideSections: [
+      {
+        title: "Wire characteristics and common uses",
+        paragraphs: [
+          "Bare GI wire is iron wire with a zinc galvanizing layer and no additional plastic insulation. It is an economical, workable wire used in general utility and construction applications.",
+        ],
+        bullets: [
+          "Common uses in the supplied notes include fencing, construction binding, mesh and rural utility work.",
+          "The zinc layer helps resist rust and corrosion; coating quality and service life depend on the product and exposure.",
+          "Use for electrical grounding only when the wire type, coating and dimensions are allowed by the system design and applicable standard.",
+        ],
+        note: "Confirm wire gauge, zinc-coating specification, length and permitted electrical use with SPI for the intended application.",
+      },
     ],
     image: "/products/bare-gi-wire.jpg",
     imageAlt: "Illustration placeholder for bare galvanized iron wire",
