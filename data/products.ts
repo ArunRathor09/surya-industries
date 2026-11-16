@@ -35,6 +35,7 @@ export type Product = {
   slug: string;
   name: string;
   category: ProductCategory;
+  price?: number | null;
   summary: string;
   description: string;
   specifications: ProductSpec[];
@@ -46,13 +47,13 @@ export type Product = {
   protectionRadius?: ProtectionRadiusRow[];
 };
 
-export const productCategories: ProductCategory[] = [
+export const productCategories = [
   "Lightning Protection",
   "Earthing",
   "Accessories",
   "Cable Management",
   "Services",
-];
+] as const satisfies readonly ProductCategory[];
 
 // Replace each image path with the corresponding approved product photograph.
 export const products: Product[] = [

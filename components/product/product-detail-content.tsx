@@ -6,6 +6,7 @@ import { ProductDetailActions } from "@/components/product/product-detail-action
 import { ProductVisual } from "@/components/product/product-visual";
 import { useLanguage } from "@/components/providers";
 import { productCategories, type Product } from "@/data/products";
+import { formatPrice } from "@/lib/currency";
 
 export function ProductDetailContent({
   product,
@@ -14,7 +15,7 @@ export function ProductDetailContent({
   product: Product;
   relatedProducts: Product[];
 }) {
-  const { text } = useLanguage();
+  const { locale, text } = useLanguage();
   const categoryIndex = productCategories.indexOf(product.category);
   const categoryLabel = text.catalog.categories[categoryIndex];
 
@@ -39,6 +40,11 @@ export function ProductDetailContent({
               </h1>
               <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
                 {product.description}
+              </p>
+              <p className="mt-4 font-heading text-lg font-semibold text-brand-purple dark:text-orange-300">
+                {product.price == null
+                  ? locale === "hi" ? "कीमत के लिए संपर्क करें" : "Price on request"
+                  : formatPrice(product.price)}
               </p>
               <div className="mt-7">
                 <ProductDetailActions slug={product.slug} />

@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import {
   Cable,
   CircleDot,
@@ -24,6 +27,30 @@ export function ProductVisual({
   product: Product;
   compact?: boolean;
 }) {
+  const [failedImage, setFailedImage] = useState<string | null>(null);
+  const customImage =
+    product.image.startsWith("https://") && failedImage !== product.image;
+
+  if (customImage) {
+    return (
+      <div
+        className={`relative overflow-hidden bg-slate-100 dark:bg-slate-800 ${
+          compact ? "h-28 w-28 rounded-xl" : "aspect-[1.05/0.82] rounded-t-2xl"
+        }`}
+      >
+        <Image
+          alt={product.imageAlt}
+          className="object-cover"
+          fill
+          onError={() => setFailedImage(product.image)}
+          sizes={compact ? "112px" : "(max-width: 768px) 100vw, 25vw"}
+          src={product.image}
+          unoptimized
+        />
+      </div>
+    );
+  }
+
   if (product.slug === "surya-power-ese-lightning-arrester") {
     return (
       <div

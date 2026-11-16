@@ -23,6 +23,10 @@ const sparks = [
   { d: "m24 0-7 19h11L11 44l5-18H5z", x: "70%", y: "77%", delay: 1.4 },
 ];
 
+const heroVideoUrl =
+  process.env.NEXT_PUBLIC_HERO_VIDEO_URL ||
+  "https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4";
+
 export function Hero() {
   const { locale, text } = useLanguage();
   const reduceMotion = useReducedMotion();
@@ -173,6 +177,16 @@ export function Hero() {
                 priority
                 sizes="(max-width: 1024px) 88vw, 42vw"
                 src={serviceImages["solar-mounting-structures"]}
+              />
+              <video
+                aria-hidden="true"
+                autoPlay={!reduceMotion}
+                className="absolute inset-0 h-full w-full object-cover"
+                loop={!reduceMotion}
+                muted
+                playsInline
+                preload="metadata"
+                src={heroVideoUrl}
               />
               <div
                 aria-hidden="true"

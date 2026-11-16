@@ -6,6 +6,7 @@ import { useLanguage } from "@/components/providers";
 import { useEnquiryList } from "@/components/product/enquiry-context";
 import { ProductVisual } from "@/components/product/product-visual";
 import { productCategories, type Product } from "@/data/products";
+import { formatPrice } from "@/lib/currency";
 
 type ProductCardProps = {
   product: Product;
@@ -22,7 +23,7 @@ export function ProductCard({
   onCompare,
   onQuickView,
 }: ProductCardProps) {
-  const { text } = useLanguage();
+  const { locale, text } = useLanguage();
   const { addProduct, hasProduct } = useEnquiryList();
   const added = hasProduct(product.slug);
   const categoryIndex = productCategories.indexOf(product.category);
@@ -57,6 +58,11 @@ export function ProductCard({
         </h2>
         <p className="mt-2 line-clamp-3 text-xs leading-6 text-slate-600 dark:text-slate-400">
           {product.summary}
+        </p>
+        <p className="mt-3 text-sm font-bold text-brand-purple dark:text-orange-300">
+          {product.price == null
+            ? locale === "hi" ? "कीमत के लिए संपर्क करें" : "Price on request"
+            : formatPrice(product.price)}
         </p>
 
         <div className="mt-auto pt-5">

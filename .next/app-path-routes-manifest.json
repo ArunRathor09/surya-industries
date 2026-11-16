@@ -1,0 +1,12 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/api/admin/products/[id]/route": "/api/admin/products/[id]",
+  "/api/admin/products/route": "/api/admin/products",
+  "/api/admin/session/route": "/api/admin/session",
+  "/page": "/",
+  "/admin/products/page": "/admin/products",
+  "/products/[slug]/page": "/products/[slug]",
+  "/products/page": "/products",
+  "/services/[slug]/page": "/services/[slug]",
+  "/services/page": "/services"
+}

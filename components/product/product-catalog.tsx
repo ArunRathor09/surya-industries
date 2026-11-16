@@ -9,7 +9,6 @@ import { ProductCompareDialog } from "@/components/product/product-compare-dialo
 import { ProductQuickView } from "@/components/product/product-quick-view";
 import {
   productCategories,
-  products,
   type Product,
   type ProductCategory,
 } from "@/data/products";
@@ -17,7 +16,7 @@ import {
 type CategoryFilter = ProductCategory | "All";
 type SortOrder = "name-asc" | "name-desc" | "newest";
 
-export function ProductCatalog() {
+export function ProductCatalog({ initialProducts }: { initialProducts: Product[] }) {
   const { text } = useLanguage();
   const [category, setCategory] = useState<CategoryFilter>("All");
   const [query, setQuery] = useState("");
@@ -29,7 +28,7 @@ export function ProductCatalog() {
 
   const visibleProducts = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase();
-    const matched = products.filter((product) => {
+    const matched = initialProducts.filter((product) => {
       const matchesCategory = category === "All" || product.category === category;
       const searchable = [
         product.name,
@@ -49,14 +48,14 @@ export function ProductCatalog() {
       const result = first.name.localeCompare(second.name);
       return sortOrder === "name-desc" ? -result : result;
     });
-  }, [category, query, sortOrder]);
+  }, [category, initialProducts, query, sortOrder]);
 
   const comparisonProducts = useMemo(
     () =>
       compareSlugs
-        .map((slug) => products.find((product) => product.slug === slug))
+        .map((slug) => initialProducts.find((product) => product.slug === slug))
         .filter((product): product is Product => product !== undefined),
-    [compareSlugs],
+    [compareSlugs, initialProducts],
   );
 
   function toggleCompare(slug: string) {

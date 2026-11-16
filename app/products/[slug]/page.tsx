@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProductDetailContent } from "@/components/product/product-detail-content";
-import { products } from "@/data/products";
 import { site } from "@/data/site";
+import { getProductBySlug, getProducts } from "@/lib/product-repository";
 
-export function generateStaticParams() {
-  return products.map(({ slug }) => ({ slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -14,7 +12,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const product = products.find((item) => item.slug === slug);
+  const product = await getProductBySlug(slug);
   if (!product) return { title: "Product not found" };
 
   return {
@@ -36,10 +34,11 @@ export default async function ProductDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = products.find((item) => item.slug === slug);
+  const product = await getProductBySlug(slug);
   if (!product) notFound();
 
-  const relatedProducts = products
+  const allProducts = await getProducts();
+  const relatedProducts = allProducts
     .filter((item) => item.category === product.category && item.slug !== product.slug)
     .slice(0, 3);
 
