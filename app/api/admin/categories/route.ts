@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import { adminCategorySchema } from "@/lib/admin-categories-schema";
 import { hasAdminSession, hasSameOrigin, isAdminConfigured } from "@/lib/admin-auth";
 import { isDatabaseConfigured } from "@/lib/database";
@@ -63,10 +64,9 @@ export async function POST(request: Request) {
   }
 
   try {
-    return NextResponse.json(
-      { name: await createProductCategory(parsed.data.name) },
-      { status: 201 },
-    );
+    const name = await createProductCategory(parsed.data.name);
+    revalidateTag("products");
+    return NextResponse.json({ name }, { status: 201 });
   } catch (error) {
     if (
       typeof error === "object" &&

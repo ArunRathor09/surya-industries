@@ -909,7 +909,7 @@ export function AdminProductDashboard({ mode }: { mode: "dashboard" | "login" })
 
       {draft && (
         <div className="fixed inset-0 z-[100] grid place-items-center overflow-y-auto bg-slate-950/60 p-3 backdrop-blur-sm sm:p-6">
-          <section aria-labelledby="product-editor-title" aria-modal="true" className="my-auto w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-2xl " role="dialog">
+          <section aria-labelledby="product-editor-title" aria-modal="true" className="my-auto flex max-h-[calc(100dvh-1.5rem)] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl sm:max-h-[calc(100dvh-3rem)]" role="dialog">
             <header className="flex items-center justify-between border-b border-slate-200 px-5 py-4  sm:px-7">
               <div>
                 <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-brand-purple ">
@@ -930,7 +930,7 @@ export function AdminProductDashboard({ mode }: { mode: "dashboard" | "login" })
               </p>
             )}
 
-            <form className="max-h-[75vh] space-y-4 overflow-y-auto px-5 py-5 sm:px-7" onSubmit={saveProduct}>
+            <form className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain px-5 py-5 sm:px-7" onSubmit={saveProduct}>
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="text-xs font-semibold text-slate-700  sm:col-span-2">
                   Product name *
@@ -1065,7 +1065,7 @@ export function AdminProductDashboard({ mode }: { mode: "dashboard" | "login" })
                   </div>
                 </section>
               </div>
-              <div className="flex flex-wrap justify-end gap-2 border-t border-slate-200 pt-4 ">
+              <div className="sticky bottom-0 flex flex-wrap justify-end gap-2 border-t border-slate-200 bg-white pt-4 pb-1">
                 <button className="min-h-10 rounded-full px-4 text-xs font-semibold text-slate-600 hover:bg-slate-100  " onClick={closeEditor} type="button">
                   Cancel
                 </button>

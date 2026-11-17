@@ -3,11 +3,16 @@ import { notFound } from "next/navigation";
 import { cache } from "react";
 import { ProductDetailContent } from "@/components/product/product-detail-content";
 import { site } from "@/data/site";
-import { getProductPageData } from "@/lib/product-repository";
+import { getProductPageData, getProducts } from "@/lib/product-repository";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 const getProductPageForRequest = cache((slug: string) => getProductPageData(slug));
+
+export async function generateStaticParams() {
+  const products = await getProducts();
+  return products.map(({ slug }) => ({ slug }));
+}
 
 export async function generateMetadata({
   params,

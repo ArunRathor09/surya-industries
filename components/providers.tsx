@@ -872,7 +872,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
   );
   const scrollOptions = useMemo(
     () => ({
-      lerp: reduceMotion ? 1 : 0.075,
+      lerp: reduceMotion ? 1 : 0.1,
       smoothWheel: !reduceMotion,
       anchors: !reduceMotion,
     }),

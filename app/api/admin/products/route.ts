@@ -1,3 +1,4 @@
+import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 import { hasAdminSession, hasSameOrigin, isAdminConfigured } from "@/lib/admin-auth";
 import { adminProductSchema } from "@/lib/admin-products-schema";
@@ -44,7 +45,9 @@ export async function POST(request: Request) {
   }
 
   try {
-    return NextResponse.json(await createProduct(parsed.data), { status: 201 });
+    const product = await createProduct(parsed.data);
+    revalidateTag("products");
+    return NextResponse.json(product, { status: 201 });
   } catch (error) {
     if (
       typeof error === "object" &&

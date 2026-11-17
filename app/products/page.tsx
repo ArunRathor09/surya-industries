@@ -3,7 +3,7 @@ import { ProductCatalog } from "@/components/product/product-catalog";
 import { site } from "@/data/site";
 import { getCatalogProducts, getProductCategories } from "@/lib/product-repository";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Product Catalogue",

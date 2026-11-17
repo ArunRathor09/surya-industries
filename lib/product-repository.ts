@@ -1,3 +1,4 @@
+import { unstable_cache } from "next/cache";
 import { productCategories, products, type Product } from "@/data/products";
 import { getNeonSql, isDatabaseConfigured } from "@/lib/database";
 
@@ -11,6 +12,7 @@ type ProductRow = {
 };
 
 export type ProductInput = Omit<Product, "id">;
+type ProductPageData = { product: Product; relatedProducts: Product[] };
 
 function mapProduct(row: ProductRow): Product {
   return {
@@ -42,9 +44,7 @@ export async function getProducts(): Promise<Product[]> {
   return rows.map((row) => mapProduct(row as ProductRow));
 }
 
-export async function getCatalogProducts(): Promise<Product[]> {
-  if (!isDatabaseConfigured()) return products.map(toCatalogProduct);
-
+async function queryCatalogProducts(): Promise<Product[]> {
   const rows = await getNeonSql().query(
     `SELECT id, slug, name, category, price::float8 AS price,
             product_data - 'applications' - 'guideSections' - 'protectionRadius' AS product_data
@@ -52,6 +52,30 @@ export async function getCatalogProducts(): Promise<Product[]> {
      ORDER BY name`,
   );
   return rows.map((row) => mapProduct(row as ProductRow));
+}
+
+const getCachedCatalogProducts = unstable_cache(
+  queryCatalogProducts,
+  ["product-catalog"],
+  { revalidate: 3600, tags: ["products"] },
+);
+
+async function queryProductCategories(): Promise<string[]> {
+  const rows = await getNeonSql().query(
+    "SELECT name FROM product_categories ORDER BY name",
+  );
+  return rows.map((row) => String(row.name));
+}
+
+const getCachedProductCategories = unstable_cache(
+  queryProductCategories,
+  ["product-categories"],
+  { revalidate: 3600, tags: ["products"] },
+);
+
+export async function getCatalogProducts(): Promise<Product[]> {
+  if (!isDatabaseConfigured()) return products.map(toCatalogProduct);
+  return getCachedCatalogProducts();
 }
 
 export async function getProductsBySlugs(slugs: string[]): Promise<Product[]> {
@@ -71,21 +95,7 @@ export async function getProductsBySlugs(slugs: string[]): Promise<Product[]> {
   return rows.map((row) => mapProduct(row as ProductRow));
 }
 
-export async function getProductPageData(slug: string): Promise<{
-  product: Product;
-  relatedProducts: Product[];
-} | undefined> {
-  if (!isDatabaseConfigured()) {
-    const product = products.find((item) => item.slug === slug);
-    if (!product) return undefined;
-    return {
-      product,
-      relatedProducts: products
-        .filter((item) => item.category === product.category && item.slug !== slug)
-        .slice(0, 3),
-    };
-  }
-
+async function queryProductPageData(slug: string): Promise<ProductPageData | null> {
   const rows = await getNeonSql().query(
     `WITH selected AS (
        SELECT id, slug, name, category, price::float8 AS price, product_data
@@ -107,7 +117,7 @@ export async function getProductPageData(slug: string): Promise<{
   const productRow = rows.find((row) => (row as ProductRow).slug === slug) as
     | ProductRow
     | undefined;
-  if (!productRow) return undefined;
+  if (!productRow) return null;
 
   return {
     product: mapProduct(productRow),
@@ -118,14 +128,34 @@ export async function getProductPageData(slug: string): Promise<{
   };
 }
 
+const getCachedProductPageData = unstable_cache(
+  queryProductPageData,
+  ["product-page-data"],
+  { revalidate: 3600, tags: ["products"] },
+);
+
+export async function getProductPageData(
+  slug: string,
+): Promise<ProductPageData | undefined> {
+  if (!isDatabaseConfigured()) {
+    const product = products.find((item) => item.slug === slug);
+    if (!product) return undefined;
+    return {
+      product,
+      relatedProducts: products
+        .filter((item) => item.category === product.category && item.slug !== slug)
+        .slice(0, 3),
+    };
+  }
+
+  return (await getCachedProductPageData(slug)) ?? undefined;
+}
+
 export async function getProductCategories(options: { allowMissingTableFallback?: boolean } = {}): Promise<string[]> {
   if (!isDatabaseConfigured()) return [...productCategories];
 
   try {
-    const rows = await getNeonSql().query(
-      "SELECT name FROM product_categories ORDER BY name",
-    );
-    return rows.map((row) => String(row.name));
+    return await getCachedProductCategories();
   } catch (error) {
     if (
       !options.allowMissingTableFallback ||

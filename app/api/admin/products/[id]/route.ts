@@ -1,3 +1,4 @@
+import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 import { hasAdminSession, hasSameOrigin, isAdminConfigured } from "@/lib/admin-auth";
 import { adminProductSchema } from "@/lib/admin-products-schema";
@@ -43,6 +44,7 @@ export async function PUT(request: Request, { params }: RouteContext) {
   try {
     const product = await updateProduct(id, parsed.data);
     if (!product) return NextResponse.json({ error: "Product not found." }, { status: 404 });
+    revalidateTag("products");
     return NextResponse.json(product);
   } catch (error) {
     if (
@@ -89,5 +91,6 @@ export async function DELETE(request: Request, { params }: RouteContext) {
 
   const deleted = await deleteProduct(id);
   if (!deleted) return NextResponse.json({ error: "Product not found." }, { status: 404 });
+  revalidateTag("products");
   return NextResponse.json({ deleted: true });
 }

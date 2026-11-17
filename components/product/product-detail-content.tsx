@@ -20,50 +20,58 @@ export function ProductDetailContent({
 
   return (
     <>
-      <section className="bg-gradient-to-br from-white via-brand-cream to-[#f4f0ff] px-5 pb-12 pt-32    sm:px-8 sm:pb-16 sm:pt-40">
+      <section className="bg-gradient-to-br from-white via-brand-cream to-[#f4f0ff] px-5 pb-12 pt-32 sm:px-8 sm:pb-16 sm:pt-40">
         <div className="mx-auto max-w-7xl">
           <Link
-            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 transition hover:text-brand-purple  "
+            className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/70 px-4 py-2 text-xs font-semibold text-slate-600 shadow-sm transition hover:border-brand-purple/20 hover:text-brand-purple"
             href="/products"
           >
             <ArrowLeft aria-hidden="true" className="size-4" />
             {text.catalog.backToProducts}
           </Link>
-          <div className="mt-8 grid items-center gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <div className="mt-6 grid items-center gap-8 rounded-[2rem] border border-white/80 bg-white/70 p-5 shadow-[0_24px_80px_rgb(15_23_42/8%)] backdrop-blur sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:p-10">
             <div className="order-2 lg:order-1">
-              <p className="inline-flex rounded-full border border-brand-purple/15 bg-white/80 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-brand-purple   ">
+              <p className="inline-flex rounded-full border border-brand-purple/15 bg-brand-purple/[0.045] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-brand-purple">
                 {categoryLabel}
               </p>
-              <h1 className="mt-5 max-w-2xl font-heading text-3xl font-semibold leading-tight tracking-tight text-slate-950  sm:text-4xl lg:text-5xl">
+              <h1 className="mt-5 max-w-2xl font-heading text-3xl font-semibold leading-[1.12] tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
                 {product.name}
               </h1>
-              <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600  sm:text-base">
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
                 {product.description}
               </p>
-              <p className="mt-4 font-heading text-lg font-semibold text-brand-purple ">
-                {product.price == null
-                  ? locale === "hi" ? "कीमत के लिए संपर्क करें" : "Price on request"
-                  : formatPrice(product.price)}
-              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+                <p className="rounded-xl bg-brand-purple/[0.06] px-4 py-3 font-heading text-lg font-semibold text-brand-purple">
+                  {product.price == null
+                    ? locale === "hi" ? "कीमत के लिए संपर्क करें" : "Price on request"
+                    : formatPrice(product.price)}
+                </p>
+                {product.specifications.slice(0, 2).map((spec) => (
+                  <p className="text-xs leading-5 text-slate-500" key={spec.label}>
+                    <span className="block font-semibold text-slate-800">{spec.value}</span>
+                    <span>{spec.label}</span>
+                  </p>
+                ))}
+              </div>
               <div className="mt-7">
                 <ProductDetailActions slug={product.slug} />
               </div>
-              <div className="mt-6 flex items-start gap-2 text-xs leading-5 text-slate-500 ">
+              <div className="mt-6 flex items-start gap-2 border-t border-slate-200/80 pt-5 text-xs leading-5 text-slate-500">
                 <Check
                   aria-hidden="true"
-                  className="mt-0.5 size-4 shrink-0 text-emerald-600 "
+                  className="mt-0.5 size-4 shrink-0 text-emerald-600"
                 />
                 {text.badges.join(" · ")}
               </div>
             </div>
-            <div className="order-1 lg:order-2">
-              <ProductVisual product={product} />
+            <div className="order-1 rounded-[1.5rem] border border-white bg-white/80 p-2 shadow-[0_16px_50px_rgb(15_23_42/7%)] lg:order-2">
+              <ProductVisual priority product={product} />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="px-5 py-12 sm:px-8 sm:py-16">
+      <section className="px-5 py-14 sm:px-8 sm:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-brand-purple ">
@@ -72,7 +80,7 @@ export function ProductDetailContent({
             <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-950 ">
               {text.catalog.technicalSpecifications}
             </h2>
-            <dl className="mt-6 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white px-5    sm:px-7">
+            <dl className="mt-6 divide-y divide-slate-100 rounded-[1.5rem] border border-slate-200/80 bg-white px-5 shadow-[0_12px_40px_rgb(15_23_42/4%)] sm:px-7">
               {product.specifications.map((spec) => (
                 <div
                   className="grid gap-1 py-3.5 sm:grid-cols-[0.8fr_1.2fr] sm:gap-6"
@@ -90,7 +98,7 @@ export function ProductDetailContent({
           </div>
 
           <aside className="space-y-8">
-            <div className="rounded-2xl border border-slate-200 bg-white p-5   sm:p-7">
+            <div className="rounded-[1.5rem] border border-slate-200/80 bg-white p-5 shadow-[0_12px_40px_rgb(15_23_42/4%)] sm:p-7">
               <h2 className="font-heading text-lg font-semibold text-slate-950 ">
                 {text.catalog.keyFeatures}
               </h2>
@@ -111,7 +119,7 @@ export function ProductDetailContent({
             </div>
 
             {product.applications && product.applications.length > 0 && (
-              <div className="rounded-2xl border border-slate-200 bg-white p-5   sm:p-7">
+              <div className="rounded-[1.5rem] border border-slate-200/80 bg-white p-5 shadow-[0_12px_40px_rgb(15_23_42/4%)] sm:p-7">
                 <h2 className="font-heading text-lg font-semibold text-slate-950 ">
                   {text.catalog.suitableApplications}
                 </h2>
@@ -136,7 +144,7 @@ export function ProductDetailContent({
           <div className="mx-auto max-w-7xl space-y-5">
             {product.guideSections.map((guide) => (
               <article
-                className="rounded-2xl border border-slate-200 bg-white p-5   sm:p-7"
+                className="rounded-[1.5rem] border border-slate-200/80 bg-white p-5 shadow-[0_12px_40px_rgb(15_23_42/4%)] sm:p-7"
                 key={guide.title}
               >
                 <h2 className="font-heading text-xl font-semibold text-slate-950 ">
@@ -299,7 +307,7 @@ export function ProductDetailContent({
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {relatedProducts.map((related) => (
                 <Link
-                  className="group rounded-2xl border border-slate-200 bg-white p-4 transition hover:-translate-y-1 hover:border-brand-purple/25 hover:shadow-lg  "
+                  className="group rounded-[1.5rem] border border-slate-200/80 bg-white p-4 shadow-[0_8px_24px_rgb(15_23_42/4%)] transition hover:-translate-y-1 hover:border-brand-purple/25 hover:shadow-xl"
                   href={`/products/${related.slug}`}
                   key={related.slug}
                 >

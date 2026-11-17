@@ -15,9 +15,8 @@ import { useLanguage } from "@/components/providers";
 import { serviceImages } from "@/data/serviceImages";
 import { site } from "@/data/site";
 
-const heroVideoUrl =
-  process.env.NEXT_PUBLIC_HERO_VIDEO_URL ||
-  "https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4";
+// Pixabay stock clip "Solar, Panels, Solar Energy" (video 42388), compressed for the hero.
+const heroVideoUrl = "/videos/hero-solar-panels.mp4";
 
 export function Hero() {
   const { locale, text } = useLanguage();
@@ -36,23 +35,25 @@ export function Hero() {
         sizes="100vw"
         src={serviceImages["solar-mounting-structures"]}
       />
-      <video
+      {!reduceMotion && (
+        <video
+          aria-hidden="true"
+          autoPlay
+          className="absolute inset-0 z-[1] h-full w-full object-cover brightness-110"
+          loop
+          muted
+          playsInline
+          preload="none"
+          src={heroVideoUrl}
+        />
+      )}
+      <div
         aria-hidden="true"
-        autoPlay={!reduceMotion}
-        className={`absolute inset-0 z-[1] h-full w-full object-cover ${reduceMotion ? "hidden" : ""}`}
-        loop={!reduceMotion}
-        muted
-        playsInline
-        preload={reduceMotion ? "none" : "metadata"}
-        src={heroVideoUrl}
+        className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(90deg,rgba(8,12,26,0.88)_0%,rgba(8,12,26,0.72)_48%,rgba(8,12,26,0.28)_100%)]"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(90deg,rgba(8,12,26,0.96)_0%,rgba(8,12,26,0.82)_48%,rgba(8,12,26,0.38)_100%)]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(0deg,rgba(8,12,26,0.7)_0%,transparent_38%,rgba(8,12,26,0.18)_100%)]"
+        className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(0deg,rgba(8,12,26,0.6)_0%,transparent_38%,rgba(8,12,26,0.14)_100%)]"
       />
       <div
         aria-hidden="true"
