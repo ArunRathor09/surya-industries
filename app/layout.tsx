@@ -3,12 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 import { AppProviders } from "@/components/providers";
-import { SiteHeader } from "@/components/layout/site-header";
-import { SiteFooter } from "@/components/layout/site-footer";
-import { FloatingActions } from "@/components/layout/floating-actions";
-import { SkipLink } from "@/components/layout/skip-link";
-import { CommandPalette } from "@/components/layout/command-palette";
-import { EnquiryDrawer } from "@/components/product/enquiry-drawer";
+import { SiteChrome } from "@/components/layout/site-chrome";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -73,16 +68,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={`${inter.variable} ${poppins.variable} min-h-screen`}>
         <AppProviders>
-          <SkipLink />
-          <SiteHeader />
-          <main id="main-content">{children}</main>
-          <SiteFooter />
-          <FloatingActions />
-          <EnquiryDrawer />
-          <CommandPalette />
+          <SiteChrome>{children}</SiteChrome>
         </AppProviders>
       </body>
     </html>

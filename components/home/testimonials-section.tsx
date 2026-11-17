@@ -20,23 +20,23 @@ export function TestimonialsSection() {
   };
 
   return (
-    <section className="bg-brand-cream px-5 py-20 dark:bg-slate-900 sm:px-8 sm:py-28" id="testimonials">
+    <section className="bg-brand-cream px-5 py-20  sm:px-8 sm:py-28" id="testimonials">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-purple dark:text-orange-300">
+            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-purple ">
               {text.testimonials.eyebrow}
             </p>
-            <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
+            <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-slate-950  sm:text-4xl">
               {text.testimonials.title}
             </h2>
-            <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600 dark:text-slate-400">
+            <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600 ">
               {text.testimonials.description}
             </p>
             <div className="mt-7 flex gap-2">
               <button
                 aria-label={text.testimonials.previous}
-                className="grid size-11 place-items-center rounded-full border border-slate-300 text-slate-700 transition hover:border-brand-purple hover:bg-brand-purple hover:text-white dark:border-white/15 dark:text-white"
+                className="grid size-11 place-items-center rounded-full border border-slate-300 text-slate-700 transition hover:border-brand-purple hover:bg-brand-purple hover:text-white  "
                 onClick={() => goTo(-1)}
                 type="button"
               >
@@ -44,7 +44,7 @@ export function TestimonialsSection() {
               </button>
               <button
                 aria-label={text.testimonials.next}
-                className="grid size-11 place-items-center rounded-full border border-slate-300 text-slate-700 transition hover:border-brand-purple hover:bg-brand-purple hover:text-white dark:border-white/15 dark:text-white"
+                className="grid size-11 place-items-center rounded-full border border-slate-300 text-slate-700 transition hover:border-brand-purple hover:bg-brand-purple hover:text-white  "
                 onClick={() => goTo(1)}
                 type="button"
               >
@@ -97,7 +97,7 @@ export function TestimonialsSection() {
         <div aria-label={text.testimonials.clientLogosLabel} className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {Array.from({ length: 4 }, (_, index) => (
             <div
-              className="flex min-h-16 items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 bg-white/60 px-3 text-center text-[10px] font-semibold uppercase tracking-wide text-slate-400 dark:border-white/15 dark:bg-slate-950/30 dark:text-slate-500"
+              className="flex min-h-16 items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 bg-white/60 px-3 text-center text-[10px] font-semibold uppercase tracking-wide text-slate-400   "
               key={index}
             >
               <Building2 aria-hidden="true" className="size-4 shrink-0" />

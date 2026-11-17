@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
 import { ProductDetailActions } from "@/components/product/product-detail-actions";
 import { ProductVisual } from "@/components/product/product-visual";
 import { useLanguage } from "@/components/providers";
-import { productCategories, type Product } from "@/data/products";
+import { getProductCategoryLabel, type Product } from "@/data/products";
 import { formatPrice } from "@/lib/currency";
 
 export function ProductDetailContent({
@@ -16,15 +16,14 @@ export function ProductDetailContent({
   relatedProducts: Product[];
 }) {
   const { locale, text } = useLanguage();
-  const categoryIndex = productCategories.indexOf(product.category);
-  const categoryLabel = text.catalog.categories[categoryIndex];
+  const categoryLabel = getProductCategoryLabel(product.category, text.catalog.categories);
 
   return (
     <>
-      <section className="bg-gradient-to-br from-white via-brand-cream to-[#f4f0ff] px-5 pb-12 pt-32 dark:from-slate-950 dark:via-slate-950 dark:to-[#19132c] sm:px-8 sm:pb-16 sm:pt-40">
+      <section className="bg-gradient-to-br from-white via-brand-cream to-[#f4f0ff] px-5 pb-12 pt-32    sm:px-8 sm:pb-16 sm:pt-40">
         <div className="mx-auto max-w-7xl">
           <Link
-            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 transition hover:text-brand-purple dark:text-slate-400 dark:hover:text-orange-300"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 transition hover:text-brand-purple  "
             href="/products"
           >
             <ArrowLeft aria-hidden="true" className="size-4" />
@@ -32,16 +31,16 @@ export function ProductDetailContent({
           </Link>
           <div className="mt-8 grid items-center gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
             <div className="order-2 lg:order-1">
-              <p className="inline-flex rounded-full border border-brand-purple/15 bg-white/80 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-brand-purple dark:border-white/10 dark:bg-white/5 dark:text-orange-300">
+              <p className="inline-flex rounded-full border border-brand-purple/15 bg-white/80 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-brand-purple   ">
                 {categoryLabel}
               </p>
-              <h1 className="mt-5 max-w-2xl font-heading text-3xl font-semibold leading-tight tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">
+              <h1 className="mt-5 max-w-2xl font-heading text-3xl font-semibold leading-tight tracking-tight text-slate-950  sm:text-4xl lg:text-5xl">
                 {product.name}
               </h1>
-              <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600  sm:text-base">
                 {product.description}
               </p>
-              <p className="mt-4 font-heading text-lg font-semibold text-brand-purple dark:text-orange-300">
+              <p className="mt-4 font-heading text-lg font-semibold text-brand-purple ">
                 {product.price == null
                   ? locale === "hi" ? "कीमत के लिए संपर्क करें" : "Price on request"
                   : formatPrice(product.price)}
@@ -49,10 +48,10 @@ export function ProductDetailContent({
               <div className="mt-7">
                 <ProductDetailActions slug={product.slug} />
               </div>
-              <div className="mt-6 flex items-start gap-2 text-xs leading-5 text-slate-500 dark:text-slate-400">
+              <div className="mt-6 flex items-start gap-2 text-xs leading-5 text-slate-500 ">
                 <Check
                   aria-hidden="true"
-                  className="mt-0.5 size-4 shrink-0 text-emerald-600 dark:text-emerald-400"
+                  className="mt-0.5 size-4 shrink-0 text-emerald-600 "
                 />
                 {text.badges.join(" · ")}
               </div>
@@ -67,22 +66,22 @@ export function ProductDetailContent({
       <section className="px-5 py-12 sm:px-8 sm:py-16">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-brand-purple dark:text-orange-300">
+            <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-brand-purple ">
               {text.catalog.productInformation}
             </p>
-            <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-950 dark:text-white">
+            <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-950 ">
               {text.catalog.technicalSpecifications}
             </h2>
-            <dl className="mt-6 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white px-5 dark:divide-white/10 dark:border-white/10 dark:bg-slate-900 sm:px-7">
+            <dl className="mt-6 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white px-5    sm:px-7">
               {product.specifications.map((spec) => (
                 <div
                   className="grid gap-1 py-3.5 sm:grid-cols-[0.8fr_1.2fr] sm:gap-6"
                   key={spec.label}
                 >
-                  <dt className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                  <dt className="text-xs font-medium text-slate-500 ">
                     {spec.label}
                   </dt>
-                  <dd className="text-sm font-medium leading-6 text-slate-900 dark:text-slate-100">
+                  <dd className="text-sm font-medium leading-6 text-slate-900 ">
                     {spec.value}
                   </dd>
                 </div>
@@ -91,14 +90,14 @@ export function ProductDetailContent({
           </div>
 
           <aside className="space-y-8">
-            <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-slate-900 sm:p-7">
-              <h2 className="font-heading text-lg font-semibold text-slate-950 dark:text-white">
+            <div className="rounded-2xl border border-slate-200 bg-white p-5   sm:p-7">
+              <h2 className="font-heading text-lg font-semibold text-slate-950 ">
                 {text.catalog.keyFeatures}
               </h2>
               <ul className="mt-5 space-y-3">
                 {product.features.map((feature) => (
                   <li
-                    className="flex gap-2.5 text-sm leading-6 text-slate-600 dark:text-slate-300"
+                    className="flex gap-2.5 text-sm leading-6 text-slate-600 "
                     key={feature}
                   >
                     <Check
@@ -112,14 +111,14 @@ export function ProductDetailContent({
             </div>
 
             {product.applications && product.applications.length > 0 && (
-              <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-slate-900 sm:p-7">
-                <h2 className="font-heading text-lg font-semibold text-slate-950 dark:text-white">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5   sm:p-7">
+                <h2 className="font-heading text-lg font-semibold text-slate-950 ">
                   {text.catalog.suitableApplications}
                 </h2>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {product.applications.map((application) => (
                     <li
-                      className="rounded-full bg-slate-100 px-3 py-2 text-xs font-medium text-slate-700 dark:bg-white/5 dark:text-slate-200"
+                      className="rounded-full bg-slate-100 px-3 py-2 text-xs font-medium text-slate-700  "
                       key={application}
                     >
                       {application}
@@ -133,19 +132,19 @@ export function ProductDetailContent({
       </section>
 
       {product.guideSections && product.guideSections.length > 0 && (
-        <section className="bg-slate-50 px-5 py-12 dark:bg-white/[0.03] sm:px-8 sm:py-16">
+        <section className="bg-slate-50 px-5 py-12  sm:px-8 sm:py-16">
           <div className="mx-auto max-w-7xl space-y-5">
             {product.guideSections.map((guide) => (
               <article
-                className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-slate-900 sm:p-7"
+                className="rounded-2xl border border-slate-200 bg-white p-5   sm:p-7"
                 key={guide.title}
               >
-                <h2 className="font-heading text-xl font-semibold text-slate-950 dark:text-white">
+                <h2 className="font-heading text-xl font-semibold text-slate-950 ">
                   {guide.title}
                 </h2>
                 {guide.paragraphs?.map((paragraph) => (
                   <p
-                    className="mt-4 max-w-4xl text-sm leading-7 text-slate-600 dark:text-slate-300"
+                    className="mt-4 max-w-4xl text-sm leading-7 text-slate-600 "
                     key={paragraph}
                   >
                     {paragraph}
@@ -155,7 +154,7 @@ export function ProductDetailContent({
                   <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                     {guide.bullets.map((bullet) => (
                       <li
-                        className="flex items-start gap-2.5 rounded-xl bg-slate-50 p-3 text-sm leading-6 text-slate-700 dark:bg-white/[0.04] dark:text-slate-300"
+                        className="flex items-start gap-2.5 rounded-xl bg-slate-50 p-3 text-sm leading-6 text-slate-700  "
                         key={bullet}
                       >
                         <Check
@@ -171,10 +170,10 @@ export function ProductDetailContent({
                   <ol className="mt-4 grid gap-2 sm:grid-cols-2">
                     {guide.steps.map((step, index) => (
                       <li
-                        className="flex items-start gap-3 rounded-xl bg-slate-50 p-3 text-sm leading-6 text-slate-700 dark:bg-white/[0.04] dark:text-slate-300"
+                        className="flex items-start gap-3 rounded-xl bg-slate-50 p-3 text-sm leading-6 text-slate-700  "
                         key={step}
                       >
-                        <span className="grid size-6 shrink-0 place-items-center rounded-full bg-brand-purple/10 text-xs font-bold text-brand-purple dark:bg-white/10 dark:text-orange-300">
+                        <span className="grid size-6 shrink-0 place-items-center rounded-full bg-brand-purple/10 text-xs font-bold text-brand-purple  ">
                           {index + 1}
                         </span>
                         {step}
@@ -183,9 +182,9 @@ export function ProductDetailContent({
                   </ol>
                 )}
                 {guide.table && (
-                  <div className="mt-5 overflow-x-auto rounded-xl border border-slate-200 dark:border-white/10">
+                  <div className="mt-5 overflow-x-auto rounded-xl border border-slate-200 ">
                     <table className="w-full min-w-[560px] text-left text-xs">
-                      <thead className="bg-slate-100 text-slate-600 dark:bg-white/[0.06] dark:text-slate-300">
+                      <thead className="bg-slate-100 text-slate-600  ">
                         <tr>
                           {guide.table.headers.map((header) => (
                             <th className="px-4 py-3 font-semibold" key={header}>
@@ -194,9 +193,9 @@ export function ProductDetailContent({
                           ))}
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                      <tbody className="divide-y divide-slate-100 ">
                         {guide.table.rows.map((row) => (
-                          <tr className="text-slate-700 dark:text-slate-300" key={row.join("-")}>
+                          <tr className="text-slate-700 " key={row.join("-")}>
                             {row.map((cell, index) =>
                               index === 0 ? (
                                 <th
@@ -219,7 +218,7 @@ export function ProductDetailContent({
                   </div>
                 )}
                 {guide.note && (
-                  <p className="mt-4 rounded-xl border border-orange-200/70 bg-orange-50/70 px-4 py-3 text-xs leading-6 text-slate-700 dark:border-orange-300/15 dark:bg-orange-300/[0.06] dark:text-slate-300">
+                  <p className="mt-4 rounded-xl border border-orange-200/70 bg-orange-50/70 px-4 py-3 text-xs leading-6 text-slate-700   ">
                     {guide.note}
                   </p>
                 )}
@@ -230,22 +229,22 @@ export function ProductDetailContent({
       )}
 
       {product.protectionRadius && (
-        <section className="bg-slate-50 px-5 py-12 dark:bg-white/[0.03] sm:px-8 sm:py-16">
+        <section className="bg-slate-50 px-5 py-12  sm:px-8 sm:py-16">
           <div className="mx-auto max-w-7xl">
             <div className="max-w-2xl">
-              <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-brand-purple dark:text-orange-300">
+              <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-brand-purple ">
                 ESE terminal
               </p>
-              <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-950 dark:text-white">
+              <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-950 ">
                 {text.catalog.radiusTitle}
               </h2>
-              <p className="mt-2 text-xs leading-6 text-slate-500 dark:text-slate-400">
+              <p className="mt-2 text-xs leading-6 text-slate-500 ">
                 {text.catalog.radiusDescription}
               </p>
             </div>
-            <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white dark:border-white/10 dark:bg-slate-900">
+            <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white  ">
               <table className="w-full min-w-[600px] text-left text-xs">
-                <thead className="bg-slate-100 text-slate-600 dark:bg-white/5 dark:text-slate-300">
+                <thead className="bg-slate-100 text-slate-600  ">
                   <tr>
                     <th className="px-5 py-4 font-semibold">
                       {text.catalog.heightMeters}
@@ -257,9 +256,9 @@ export function ProductDetailContent({
                     ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                <tbody className="divide-y divide-slate-100 ">
                   {product.protectionRadius.map((row) => (
-                    <tr className="text-slate-700 dark:text-slate-200" key={row.height}>
+                    <tr className="text-slate-700 " key={row.height}>
                       <th className="px-5 py-4 font-semibold">{row.height}</th>
                       {[row.level1, row.level2, row.level3, row.level4].map(
                         (radius, index) => (
@@ -282,15 +281,15 @@ export function ProductDetailContent({
           <div className="mx-auto max-w-7xl">
             <div className="flex items-end justify-between gap-5">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-brand-purple dark:text-orange-300">
+                <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-brand-purple ">
                   {categoryLabel}
                 </p>
-                <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-950 dark:text-white">
+                <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-950 ">
                   {text.catalog.relatedProductsTitle}
                 </h2>
               </div>
               <Link
-                className="hidden items-center gap-1 text-xs font-semibold text-brand-purple hover:text-brand-orange dark:text-orange-300 sm:inline-flex"
+                className="hidden items-center gap-1 text-xs font-semibold text-brand-purple hover:text-brand-orange  sm:inline-flex"
                 href="/products"
               >
                 {text.catalog.viewAllProducts}
@@ -300,15 +299,15 @@ export function ProductDetailContent({
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {relatedProducts.map((related) => (
                 <Link
-                  className="group rounded-2xl border border-slate-200 bg-white p-4 transition hover:-translate-y-1 hover:border-brand-purple/25 hover:shadow-lg dark:border-white/10 dark:bg-slate-900"
+                  className="group rounded-2xl border border-slate-200 bg-white p-4 transition hover:-translate-y-1 hover:border-brand-purple/25 hover:shadow-lg  "
                   href={`/products/${related.slug}`}
                   key={related.slug}
                 >
                   <ProductVisual compact product={related} />
-                  <p className="mt-4 font-heading text-sm font-semibold leading-6 text-slate-900 transition group-hover:text-brand-purple dark:text-white dark:group-hover:text-orange-300">
+                  <p className="mt-4 font-heading text-sm font-semibold leading-6 text-slate-900 transition group-hover:text-brand-purple  ">
                     {related.name}
                   </p>
-                  <p className="mt-2 line-clamp-2 text-xs leading-5 text-slate-500 dark:text-slate-400">
+                  <p className="mt-2 line-clamp-2 text-xs leading-5 text-slate-500 ">
                     {related.summary}
                   </p>
                 </Link>

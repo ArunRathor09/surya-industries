@@ -47,7 +47,7 @@ export function FloatingActions() {
 
       <button
         aria-label={text.floating.scrollTop}
-        className={`fixed bottom-24 left-4 z-40 grid size-11 place-items-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-lg backdrop-blur transition hover:-translate-y-1 hover:text-brand-purple dark:border-white/10 dark:bg-slate-900/90 dark:text-white sm:bottom-8 sm:left-auto sm:right-24 ${
+        className={`fixed bottom-24 left-4 z-40 grid size-11 place-items-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-lg backdrop-blur transition hover:-translate-y-1 hover:text-brand-purple    sm:bottom-8 sm:left-auto sm:right-24 ${
           showTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
         }`}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -56,16 +56,16 @@ export function FloatingActions() {
         <ArrowUp aria-hidden="true" className="size-4" />
       </button>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-3 border-t border-slate-200 bg-white/95 p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] shadow-[0_-8px_24px_rgb(15_23_42/8%)] backdrop-blur-lg dark:border-white/10 dark:bg-slate-950/95 sm:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-3 border-t border-slate-200 bg-white/95 p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] shadow-[0_-8px_24px_rgb(15_23_42/8%)] backdrop-blur-lg   sm:hidden">
         <a
-          className="flex flex-col items-center justify-center gap-1 rounded-xl py-1.5 text-[10px] font-semibold text-slate-700 dark:text-slate-200"
+          className="flex flex-col items-center justify-center gap-1 rounded-xl py-1.5 text-[10px] font-semibold text-slate-700 "
           href={`tel:${site.contact.phones[0].replace(/[^\d+]/g, "")}`}
         >
           <Phone aria-hidden="true" className="size-4 text-brand-purple" />
           {text.floating.callNow}
         </a>
         <a
-          className="flex flex-col items-center justify-center gap-1 rounded-xl py-1.5 text-[10px] font-semibold text-slate-700 dark:text-slate-200"
+          className="flex flex-col items-center justify-center gap-1 rounded-xl py-1.5 text-[10px] font-semibold text-slate-700 "
           href={getWhatsAppUrl(text.floating.whatsappMessage)}
           rel="noreferrer"
           target="_blank"
@@ -74,7 +74,7 @@ export function FloatingActions() {
           {text.floating.whatsapp}
         </a>
         <Link
-          className="flex flex-col items-center justify-center gap-1 rounded-xl py-1.5 text-[10px] font-semibold text-slate-700 dark:text-slate-200"
+          className="flex flex-col items-center justify-center gap-1 rounded-xl py-1.5 text-[10px] font-semibold text-slate-700 "
           href="/#home-enquiry"
         >
           <span className="grid size-4 place-items-center rounded-full bg-brand-orange text-[10px] font-bold text-brand-navy">

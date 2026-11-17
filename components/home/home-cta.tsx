@@ -27,35 +27,35 @@ export function HomeCTA() {
   }
 
   return (
-    <section className="relative isolate overflow-hidden bg-gradient-to-br from-white via-brand-cream to-[#f6f3ff] px-5 py-20 text-slate-950 dark:from-slate-950 dark:via-slate-950 dark:to-[#18132b] dark:text-white sm:px-8 sm:py-28" id="home-enquiry">
-      <div aria-hidden="true" className="absolute -left-32 top-0 -z-10 size-[30rem] rounded-full bg-brand-purple/10 blur-[130px] dark:bg-brand-purple/35" />
-      <div aria-hidden="true" className="absolute -right-32 bottom-0 -z-10 size-[26rem] rounded-full bg-brand-orange/10 blur-[120px] dark:bg-brand-orange/20" />
+    <section className="relative isolate overflow-hidden bg-gradient-to-br from-white via-brand-cream to-[#f6f3ff] px-5 py-20 text-slate-950     sm:px-8 sm:py-28" id="home-enquiry">
+      <div aria-hidden="true" className="absolute -left-32 top-0 -z-10 size-[30rem] rounded-full bg-brand-purple/10 blur-[130px] " />
+      <div aria-hidden="true" className="absolute -right-32 bottom-0 -z-10 size-[26rem] rounded-full bg-brand-orange/10 blur-[120px] " />
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:gap-16">
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-purple dark:text-orange-300">
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-purple ">
             {text.cta.eyebrow}
           </p>
           <h2 className="mt-3 max-w-2xl font-heading text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
             {text.cta.title}
           </h2>
-          <p className="mt-5 max-w-xl text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
+          <p className="mt-5 max-w-xl text-sm leading-7 text-slate-600  sm:text-base">
             {text.cta.description}
           </p>
-          <div className="mt-7 flex items-center gap-3 text-xs leading-5 text-slate-600 dark:text-slate-400">
-            <ShieldCheck aria-hidden="true" className="size-5 shrink-0 text-brand-purple dark:text-orange-300" />
+          <div className="mt-7 flex items-center gap-3 text-xs leading-5 text-slate-600 ">
+            <ShieldCheck aria-hidden="true" className="size-5 shrink-0 text-brand-purple " />
             {text.cta.formHint}
           </div>
         </div>
 
-        <div className="rounded-[1.75rem] border border-slate-200 bg-white/90 p-5 shadow-[0_24px_70px_rgb(15_23_42/12%)] backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.07] sm:p-7">
+        <div className="rounded-[1.75rem] border border-slate-200 bg-white/90 p-5 shadow-[0_24px_70px_rgb(15_23_42/12%)] backdrop-blur-xl   sm:p-7">
           <form className="space-y-4" onSubmit={prepareEnquiry}>
             <div>
-              <label className="mb-2 block text-xs font-semibold text-slate-700 dark:text-slate-200" htmlFor="quick-name">
+              <label className="mb-2 block text-xs font-semibold text-slate-700 " htmlFor="quick-name">
                 {text.cta.name}
               </label>
               <input
                 autoComplete="name"
-                className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-950 outline-none placeholder:text-slate-400 focus:border-brand-purple/50 focus:ring-4 focus:ring-brand-purple/10 dark:border-white/10 dark:bg-slate-950/60 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-orange-300/70 dark:focus:ring-orange-300/10"
+                className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-950 outline-none placeholder:text-slate-400 focus:border-brand-purple/50 focus:ring-4 focus:ring-brand-purple/10      "
                 id="quick-name"
                 minLength={2}
                 name="name"
@@ -66,12 +66,12 @@ export function HomeCTA() {
               />
             </div>
             <div>
-              <label className="mb-2 block text-xs font-semibold text-slate-700 dark:text-slate-200" htmlFor="quick-phone">
+              <label className="mb-2 block text-xs font-semibold text-slate-700 " htmlFor="quick-phone">
                 {text.cta.phone}
               </label>
               <input
                 autoComplete="tel"
-                className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-950 outline-none placeholder:text-slate-400 focus:border-brand-purple/50 focus:ring-4 focus:ring-brand-purple/10 dark:border-white/10 dark:bg-slate-950/60 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-orange-300/70 dark:focus:ring-orange-300/10"
+                className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-950 outline-none placeholder:text-slate-400 focus:border-brand-purple/50 focus:ring-4 focus:ring-brand-purple/10      "
                 id="quick-phone"
                 name="phone"
                 onInvalid={(event) => event.currentTarget.setCustomValidity(text.cta.phoneError)}
@@ -83,21 +83,21 @@ export function HomeCTA() {
               />
             </div>
             <div>
-              <label className="mb-2 block text-xs font-semibold text-slate-700 dark:text-slate-200" htmlFor="quick-product">
+              <label className="mb-2 block text-xs font-semibold text-slate-700 " htmlFor="quick-product">
                 {text.cta.product}
               </label>
               <select
-                className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-950 outline-none focus:border-brand-purple/50 focus:ring-4 focus:ring-brand-purple/10 dark:border-white/10 dark:bg-slate-950/60 dark:text-white dark:focus:border-orange-300/70 dark:focus:ring-orange-300/10"
+                className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm text-slate-950 outline-none focus:border-brand-purple/50 focus:ring-4 focus:ring-brand-purple/10     "
                 defaultValue=""
                 id="quick-product"
                 name="product"
                 required
               >
-                <option className="bg-white text-slate-950 dark:bg-slate-950 dark:text-white" disabled value="">
+                <option className="bg-white text-slate-950  " disabled value="">
                   {text.cta.choose}
                 </option>
                 {text.cta.options.map((option) => (
-                  <option className="bg-white text-slate-950 dark:bg-slate-950 dark:text-white" key={option} value={option}>
+                  <option className="bg-white text-slate-950  " key={option} value={option}>
                     {option}
                   </option>
                 ))}
@@ -115,15 +115,15 @@ export function HomeCTA() {
           {whatsappHref && (
             <div
               aria-live="polite"
-              className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-4 dark:border-emerald-300/20 dark:bg-emerald-300/10"
+              className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-4  "
               role="status"
             >
-              <p className="flex items-start gap-2 text-xs leading-5 text-emerald-800 dark:text-emerald-100">
+              <p className="flex items-start gap-2 text-xs leading-5 text-emerald-800 ">
                 <Check aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
                 {text.cta.followUp}
               </p>
               <a
-                className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-emerald-900 underline decoration-emerald-900/40 underline-offset-4 hover:text-brand-purple dark:text-white dark:decoration-white/40 dark:hover:text-orange-200"
+                className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-emerald-900 underline decoration-emerald-900/40 underline-offset-4 hover:text-brand-purple   "
                 href={whatsappHref}
                 rel="noreferrer"
                 target="_blank"

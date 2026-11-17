@@ -1,29 +1,36 @@
+import { readdir, readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { loadEnvConfig } from "@next/env";
-import { readFile } from "node:fs/promises";
-import { getDatabasePool } from "@/lib/database";
+import { getNeonSql } from "@/lib/database";
 
 loadEnvConfig(process.cwd());
 
 async function main() {
-  const migration = await readFile("db/migrations/001_product_catalog.sql", "utf8");
-  const pool = getDatabasePool();
-  const client = await pool.connect();
+  const sql = getNeonSql();
+  const migrationDirectory = join(process.cwd(), "db/migrations");
+  const migrations = (await readdir(migrationDirectory))
+    .filter((file) => file.endsWith(".sql"))
+    .sort();
 
-  try {
-    await client.query("BEGIN");
-    await client.query(migration);
-    await client.query("COMMIT");
-    console.info("Product catalog migration applied.");
-  } catch (error) {
-    await client.query("ROLLBACK");
-    throw error;
-  } finally {
-    client.release();
-    await pool.end();
+  for (const migrationName of migrations) {
+    const migration = await readFile(join(migrationDirectory, migrationName), "utf8");
+    for (const statement of migration.split(";").map((part) => part.trim()).filter(Boolean)) {
+      await sql.query(statement);
+    }
   }
+  await sql.query(`
+    SELECT setval(
+      pg_get_serial_sequence('products', 'id'),
+      COALESCE(MAX(id), 1),
+      MAX(id) IS NOT NULL
+    )
+    FROM products
+  `);
+
+  console.info("Neon product catalog schema is ready.");
 }
 
 main().catch((error: unknown) => {
-  console.error("Product catalog migration failed:", error);
+  console.error("Neon product catalog migration failed:", error);
   process.exitCode = 1;
 });

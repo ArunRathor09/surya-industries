@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { productCategories } from "@/data/products";
 
 const optionalText = z.string().trim().max(8000);
 
@@ -11,7 +10,7 @@ export const adminProductSchema = z.object({
     .max(180)
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   name: z.string().trim().min(2).max(180),
-  category: z.enum(productCategories),
+  category: z.string().trim().min(2).max(80),
   summary: z.string().trim().min(5).max(500),
   description: optionalText,
   price: z

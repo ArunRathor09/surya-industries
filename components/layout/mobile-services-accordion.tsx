@@ -22,7 +22,7 @@ export function MobileServicesAccordion({
       <button
         aria-controls={expanded ? "mobile-services-categories" : undefined}
         aria-expanded={expanded}
-        className="flex min-h-12 w-full items-center justify-between rounded-xl px-4 py-3.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange dark:text-slate-200 dark:hover:bg-white/5"
+        className="flex min-h-12 w-full items-center justify-between rounded-xl px-4 py-3.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange  "
         onClick={() => setExpanded((value) => !value)}
         type="button"
       >
@@ -49,7 +49,7 @@ export function MobileServicesAccordion({
           >
             <div className="space-y-1 px-2 pb-2">
               <Link
-                className="flex min-h-11 items-center rounded-lg px-3 text-xs font-bold text-brand-purple hover:bg-brand-purple/[0.06] dark:text-orange-300 dark:hover:bg-white/5"
+                className="flex min-h-11 items-center rounded-lg px-3 text-xs font-bold text-brand-purple hover:bg-brand-purple/[0.06]  "
                 href="/services"
                 onClick={onNavigate}
               >
@@ -64,14 +64,14 @@ export function MobileServicesAccordion({
                   .replaceAll("&", "and")}`;
                 return (
                   <section
-                    className="rounded-lg border border-slate-100 dark:border-white/5"
+                    className="rounded-lg border border-slate-100 "
                     key={category.title}
                   >
                     <button
                       aria-controls={categoryOpen ? panelId : undefined}
                       aria-expanded={categoryOpen}
                       aria-label={`${text.services.expandCategory}: ${category.title}`}
-                      className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-[10px] font-bold tracking-[0.1em] text-slate-700 transition hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-white/5"
+                      className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-[10px] font-bold tracking-[0.1em] text-slate-700 transition hover:bg-slate-50  "
                       onClick={() =>
                         setActiveCategory(categoryOpen ? null : category.title)
                       }
@@ -79,7 +79,7 @@ export function MobileServicesAccordion({
                     >
                       <Icon
                         aria-hidden="true"
-                        className="size-4 shrink-0 text-brand-purple dark:text-orange-300"
+                        className="size-4 shrink-0 text-brand-purple "
                       />
                       <span className="flex-1">{category.title}</span>
                       <ChevronDown
@@ -102,14 +102,14 @@ export function MobileServicesAccordion({
                           <li className="space-y-0.5 px-2 pb-2">
                             {category.items.map((item) => (
                               <Link
-                                className="flex min-h-11 items-center gap-2 rounded-lg px-3 text-xs leading-5 text-slate-600 transition hover:bg-brand-purple/[0.06] hover:text-brand-purple focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-orange-300"
+                                className="flex min-h-11 items-center gap-2 rounded-lg px-3 text-xs leading-5 text-slate-600 transition hover:bg-brand-purple/[0.06] hover:text-brand-purple focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange   "
                                 href={`/services/${item.slug}`}
                                 key={item.slug}
                                 onClick={onNavigate}
                               >
                                 <span
                                   aria-hidden="true"
-                                  className="size-1.5 shrink-0 rounded-full bg-slate-300 dark:bg-slate-600"
+                                  className="size-1.5 shrink-0 rounded-full bg-slate-300 "
                                 />
                                 {item.label}
                               </Link>

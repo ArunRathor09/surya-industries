@@ -28,10 +28,10 @@ export function ServiceDetailContent({
 
   return (
     <>
-      <section className="bg-gradient-to-br from-white via-brand-cream to-[#f3efff] px-5 pb-12 pt-32 dark:from-slate-950 dark:via-slate-950 dark:to-[#19132c] sm:px-8 sm:pb-16 sm:pt-40">
+      <section className="bg-gradient-to-br from-white via-brand-cream to-[#f3efff] px-5 pb-12 pt-32    sm:px-8 sm:pb-16 sm:pt-40">
         <div className="mx-auto max-w-7xl">
           <Link
-            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 transition hover:text-brand-purple dark:text-slate-400 dark:hover:text-orange-300"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 transition hover:text-brand-purple  "
             href="/services"
           >
             <ArrowLeft aria-hidden="true" className="size-4" />
@@ -39,30 +39,30 @@ export function ServiceDetailContent({
           </Link>
           <div className="mt-8 grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
             <div className="order-2 lg:order-1">
-              <p className="inline-flex items-center gap-2 rounded-full border border-brand-purple/15 bg-white/80 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-brand-purple dark:border-white/10 dark:bg-white/5 dark:text-orange-300">
+              <p className="inline-flex items-center gap-2 rounded-full border border-brand-purple/15 bg-white/80 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-brand-purple   ">
                 <Icon aria-hidden="true" className="size-3.5" />
                 {category.title}
               </p>
-              <h1 className="mt-5 max-w-2xl font-heading text-3xl font-semibold leading-tight tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">
+              <h1 className="mt-5 max-w-2xl font-heading text-3xl font-semibold leading-tight tracking-tight text-slate-950  sm:text-4xl lg:text-5xl">
                 {item.label}
               </h1>
-              <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600  sm:text-base">
                 {content.description}
               </p>
               <div className="mt-7">
                 <ServiceEnquireButton item={item} />
               </div>
-              <div className="mt-5 flex items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400">
+              <div className="mt-5 flex items-center gap-2 text-[10px] text-slate-500 ">
                 <Check
                   aria-hidden="true"
-                  className="size-4 text-emerald-600 dark:text-emerald-400"
+                  className="size-4 text-emerald-600 "
                 />
                 {text.badges.join(" · ")}
               </div>
             </div>
             <ServiceImage
               alt={item.label}
-              className="order-1 aspect-[1.25] w-full rounded-[1.5rem] border border-white/80 shadow-[0_24px_70px_rgb(15_23_42/12%)] dark:border-white/10 lg:order-2"
+              className="order-1 aspect-[1.25] w-full rounded-[1.5rem] border border-white/80 shadow-[0_24px_70px_rgb(15_23_42/12%)]  lg:order-2"
               icon={Icon}
               sizes="(max-width: 1024px) 100vw, 55vw"
               src={item.image}
@@ -74,17 +74,17 @@ export function ServiceDetailContent({
       <section className="px-5 py-12 sm:px-8 sm:py-16">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr]">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-brand-purple dark:text-orange-300">
+            <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-brand-purple ">
               {text.services.detailsEyebrow}
             </p>
-            <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-950 dark:text-white">
+            <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-950 ">
               {text.services.keyPoints}
             </h2>
-            <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-300">
+            <p className="mt-4 text-sm leading-7 text-slate-600 ">
               {item.label} — {content.description}
             </p>
             <Link
-              className="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-brand-purple transition hover:text-brand-orange dark:text-orange-300"
+              className="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-brand-purple transition hover:text-brand-orange "
               href="/services"
             >
               {text.services.allServices}
@@ -94,10 +94,10 @@ export function ServiceDetailContent({
           <ul className="grid gap-3 sm:grid-cols-2">
             {content.keyPoints.map((point) => (
               <li
-                className="flex gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-6 text-slate-700 dark:border-white/10 dark:bg-slate-900 dark:text-slate-200"
+                className="flex gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-6 text-slate-700   "
                 key={point}
               >
-                <span className="grid size-7 shrink-0 place-items-center rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300">
+                <span className="grid size-7 shrink-0 place-items-center rounded-full bg-emerald-50 text-emerald-700  ">
                   <Check aria-hidden="true" className="size-4" />
                 </span>
                 {point}
@@ -108,19 +108,19 @@ export function ServiceDetailContent({
       </section>
 
       {relatedServices.length > 0 && (
-        <section className="bg-slate-50 px-5 py-12 dark:bg-white/[0.03] sm:px-8 sm:py-16">
+        <section className="bg-slate-50 px-5 py-12  sm:px-8 sm:py-16">
           <div className="mx-auto max-w-7xl">
             <div className="flex items-end justify-between gap-5">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-brand-purple dark:text-orange-300">
+                <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-brand-purple ">
                   {category.title}
                 </p>
-                <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-950 dark:text-white">
+                <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-950 ">
                   {text.services.related}
                 </h2>
               </div>
               <Link
-                className="hidden items-center gap-1 text-xs font-semibold text-brand-purple hover:text-brand-orange dark:text-orange-300 sm:inline-flex"
+                className="hidden items-center gap-1 text-xs font-semibold text-brand-purple hover:text-brand-orange  sm:inline-flex"
                 href="/services"
               >
                 {text.services.allServices}

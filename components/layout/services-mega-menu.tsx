@@ -88,7 +88,7 @@ export function ServicesMegaMenu({
           <motion.div
             animate={entrance}
             aria-label={text.services.menuTitle}
-            className="fixed left-1/2 top-[5.4rem] z-[51] w-[min(1100px,92vw)] -translate-x-1/2 rounded-2xl border border-white/80 bg-white/95 text-slate-900 shadow-[0_32px_90px_rgb(15_23_42/25%)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/95 dark:text-white sm:top-[5.75rem]"
+            className="fixed left-1/2 top-[5.4rem] z-[51] w-[min(1100px,92vw)] -translate-x-1/2 rounded-2xl border border-white/80 bg-white/95 text-slate-900 shadow-[0_32px_90px_rgb(15_23_42/25%)] backdrop-blur-2xl    sm:top-[5.75rem]"
             exit={exit}
             id={menuId}
             initial={initial}
@@ -108,24 +108,24 @@ export function ServicesMegaMenu({
             />
             <span
               aria-hidden="true"
-              className="absolute -top-2 left-1/2 size-4 -translate-x-1/2 rotate-45 border-l border-t border-white/80 bg-white dark:border-white/10 dark:bg-slate-950"
+              className="absolute -top-2 left-1/2 size-4 -translate-x-1/2 rotate-45 border-l border-t border-white/80 bg-white  "
             />
 
             <div className="max-h-[calc(100dvh-7.5rem)] overflow-y-auto px-4 pb-4 pt-6 sm:px-6 sm:pb-5 sm:pt-7">
               <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
                 <div>
-                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-purple dark:text-orange-300">
+                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-purple ">
                     SPI
                   </p>
                   <h2 className="mt-1 font-heading text-base font-semibold sm:text-lg">
                     {text.services.menuTitle}
                   </h2>
-                  <p className="mt-1 max-w-2xl text-[11px] leading-5 text-slate-500 dark:text-slate-400">
+                  <p className="mt-1 max-w-2xl text-[11px] leading-5 text-slate-500 ">
                     {text.services.menuDescription}
                   </p>
                 </div>
                 <Link
-                  className="inline-flex items-center gap-1.5 rounded-full border border-brand-purple/15 bg-brand-purple/[0.04] px-3.5 py-2 text-[10px] font-bold text-brand-purple transition hover:bg-brand-purple hover:text-white dark:border-white/10 dark:bg-white/5 dark:text-orange-300 dark:hover:bg-brand-purple dark:hover:text-white"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-brand-purple/15 bg-brand-purple/[0.04] px-3.5 py-2 text-[10px] font-bold text-brand-purple transition hover:bg-brand-purple hover:text-white     "
                   href="/services"
                   onClick={onClose}
                   role="menuitem"
@@ -163,8 +163,8 @@ export function ServicesMegaMenu({
                         },
                       }}
                     >
-                      <h3 className="flex min-h-10 items-center gap-2 rounded-lg border-l-[3px] border-brand-purple bg-gradient-to-r from-[#eef2ff] via-[#f5f1ff] to-[#fff7ed] px-2.5 py-2 text-[10px] font-extrabold tracking-[0.1em] text-slate-800 dark:from-indigo-950/60 dark:via-violet-950/40 dark:to-orange-950/30 dark:text-slate-100">
-                        <span className="grid size-6 shrink-0 place-items-center rounded-md bg-white/80 text-brand-purple shadow-sm dark:bg-white/10 dark:text-orange-300">
+                      <h3 className="flex min-h-10 items-center gap-2 rounded-lg border-l-[3px] border-brand-purple bg-gradient-to-r from-[#eef2ff] via-[#f5f1ff] to-[#fff7ed] px-2.5 py-2 text-[10px] font-extrabold tracking-[0.1em] text-slate-800    ">
+                        <span className="grid size-6 shrink-0 place-items-center rounded-md bg-white/80 text-brand-purple shadow-sm  ">
                           <Icon aria-hidden="true" className="size-3.5" />
                         </span>
                         {category.title}
@@ -178,8 +178,8 @@ export function ServicesMegaMenu({
                                 aria-current={active ? "true" : undefined}
                                 className={`group flex min-h-8 items-center gap-2 rounded-lg px-2 py-1 text-[10px] leading-4 transition duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange ${
                                   active
-                                    ? "translate-x-0.5 bg-brand-purple/[0.07] font-semibold text-brand-purple dark:bg-white/10 dark:text-orange-300"
-                                    : "text-slate-600 hover:translate-x-0.5 hover:bg-brand-purple/[0.05] hover:text-brand-purple dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-orange-300"
+                                    ? "translate-x-0.5 bg-brand-purple/[0.07] font-semibold text-brand-purple  "
+                                    : "text-slate-600 hover:translate-x-0.5 hover:bg-brand-purple/[0.05] hover:text-brand-purple   "
                                 }`}
                                 data-service-menu-item
                                 href={`/services/${item.slug}`}
@@ -194,7 +194,7 @@ export function ServicesMegaMenu({
                                   className={`size-1.5 shrink-0 rounded-full transition-colors ${
                                     active
                                       ? "bg-brand-orange"
-                                      : "bg-slate-300 group-hover:bg-brand-orange dark:bg-slate-600"
+                                      : "bg-slate-300 group-hover:bg-brand-orange "
                                   }`}
                                 />
                                 <span className="line-clamp-2 text-[11px] leading-5">{item.label}</span>
@@ -208,12 +208,12 @@ export function ServicesMegaMenu({
                 })}
               </motion.div>
 
-              <div className="mt-4 border-t border-slate-200 pt-4 dark:border-white/10">
+              <div className="mt-4 border-t border-slate-200 pt-4 ">
                 <AnimatePresence mode="wait" initial={false}>
                   {activeService && activeCategory ? (
                     <motion.div
                       animate={{ opacity: 1, y: 0 }}
-                      className="grid items-center gap-3 rounded-xl bg-slate-50 p-3 dark:bg-white/[0.04] sm:grid-cols-[112px_1fr_auto]"
+                      className="grid items-center gap-3 rounded-xl bg-slate-50 p-3  sm:grid-cols-[112px_1fr_auto]"
                       exit={{ opacity: 0, y: reduceMotion ? 0 : 5 }}
                       initial={{ opacity: 0, y: reduceMotion ? 0 : 5 }}
                       key={activeService.slug}
@@ -227,7 +227,7 @@ export function ServicesMegaMenu({
                         src={activeService.image}
                       />
                       <div className="min-w-0">
-                        <p className="text-[9px] font-bold uppercase tracking-[0.13em] text-brand-purple dark:text-orange-300">
+                        <p className="text-[9px] font-bold uppercase tracking-[0.13em] text-brand-purple ">
                           {activeCategory.title}
                         </p>
                         <p className="mt-1 truncate font-heading text-xs font-semibold">
@@ -247,7 +247,7 @@ export function ServicesMegaMenu({
                   ) : (
                     <motion.div
                       animate={{ opacity: 1 }}
-                      className="flex flex-col gap-3 rounded-xl bg-gradient-to-r from-violet-50 via-white to-orange-50 p-3 dark:from-violet-950/25 dark:via-slate-900 dark:to-orange-950/20 sm:flex-row sm:items-center sm:justify-between sm:px-5"
+                      className="flex flex-col gap-3 rounded-xl bg-gradient-to-r from-violet-50 via-white to-orange-50 p-3    sm:flex-row sm:items-center sm:justify-between sm:px-5"
                       exit={{ opacity: 0 }}
                       initial={{ opacity: 0 }}
                       key="services-promo"
@@ -257,7 +257,7 @@ export function ServicesMegaMenu({
                         <p className="font-heading text-xs font-semibold">
                           {text.services.needHelp}
                         </p>
-                        <p className="mt-1 text-[10px] text-slate-500 dark:text-slate-400">
+                        <p className="mt-1 text-[10px] text-slate-500 ">
                           {text.services.talkExpert}
                         </p>
                       </div>
@@ -273,7 +273,7 @@ export function ServicesMegaMenu({
                           WhatsApp
                         </a>
                         <a
-                          className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 text-[10px] font-bold text-slate-700 transition hover:border-brand-purple hover:text-brand-purple dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-white"
+                          className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 text-[10px] font-bold text-slate-700 transition hover:border-brand-purple hover:text-brand-purple    "
                           href={`tel:${site.contact.phones[0].replace(/[^\d+]/g, "")}`}
                           role="menuitem"
                         >

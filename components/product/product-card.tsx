@@ -5,7 +5,7 @@ import { ArrowUpRight, Check, Eye, GitCompareArrows, Plus } from "lucide-react";
 import { useLanguage } from "@/components/providers";
 import { useEnquiryList } from "@/components/product/enquiry-context";
 import { ProductVisual } from "@/components/product/product-visual";
-import { productCategories, type Product } from "@/data/products";
+import { getProductCategoryLabel, type Product } from "@/data/products";
 import { formatPrice } from "@/lib/currency";
 
 type ProductCardProps = {
@@ -26,14 +26,13 @@ export function ProductCard({
   const { locale, text } = useLanguage();
   const { addProduct, hasProduct } = useEnquiryList();
   const added = hasProduct(product.slug);
-  const categoryIndex = productCategories.indexOf(product.category);
-  const categoryLabel = text.catalog.categories[categoryIndex];
+  const categoryLabel = getProductCategoryLabel(product.category, text.catalog.categories);
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_8px_24px_rgb(15_23_42/4%)] transition duration-300 hover:-translate-y-1 hover:border-brand-purple/20 hover:shadow-[0_22px_55px_rgb(15_23_42/12%)] dark:border-white/10 dark:bg-slate-900">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_8px_24px_rgb(15_23_42/4%)] transition duration-300 hover:-translate-y-1 hover:border-brand-purple/20 hover:shadow-[0_22px_55px_rgb(15_23_42/12%)]  ">
       <div className="relative">
         <ProductVisual product={product} />
-        <span className="absolute left-4 top-4 rounded-full border border-white/80 bg-white/90 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.14em] text-brand-purple shadow-sm dark:border-white/10 dark:bg-slate-950/85 dark:text-orange-300">
+        <span className="absolute left-4 top-4 rounded-full border border-white/80 bg-white/90 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.14em] text-brand-purple shadow-sm   ">
           {categoryLabel}
         </span>
         <button
@@ -48,18 +47,19 @@ export function ProductCard({
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <h2 className="font-heading text-base font-semibold leading-6 text-slate-950 dark:text-white">
+        <h2 className="font-heading text-base font-semibold leading-6 text-slate-950 ">
           <Link
-            className="rounded-sm outline-none transition hover:text-brand-purple focus-visible:underline dark:hover:text-orange-300"
+            className="rounded-sm outline-none transition hover:text-brand-purple focus-visible:underline "
             href={`/products/${product.slug}`}
+            prefetch
           >
             {product.name}
           </Link>
         </h2>
-        <p className="mt-2 line-clamp-3 text-xs leading-6 text-slate-600 dark:text-slate-400">
+        <p className="mt-2 line-clamp-3 text-xs leading-6 text-slate-600 ">
           {product.summary}
         </p>
-        <p className="mt-3 text-sm font-bold text-brand-purple dark:text-orange-300">
+        <p className="mt-3 text-sm font-bold text-brand-purple ">
           {product.price == null
             ? locale === "hi" ? "कीमत के लिए संपर्क करें" : "Price on request"
             : formatPrice(product.price)}
@@ -71,7 +71,7 @@ export function ProductCard({
               aria-pressed={added}
               className={`inline-flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-full px-3 text-[10px] font-bold transition ${
                 added
-                  ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300"
+                  ? "bg-emerald-50 text-emerald-700  "
                   : "bg-brand-purple text-white hover:bg-purple-800"
               }`}
               disabled={added}
@@ -90,8 +90,8 @@ export function ProductCard({
               aria-pressed={compareSelected}
               className={`grid size-10 shrink-0 place-items-center rounded-full border transition disabled:cursor-not-allowed disabled:opacity-40 ${
                 compareSelected
-                  ? "border-brand-orange bg-orange-50 text-brand-orange dark:bg-orange-400/10"
-                  : "border-slate-200 text-slate-500 hover:border-brand-purple hover:text-brand-purple dark:border-white/10 dark:text-slate-300 dark:hover:text-white"
+                  ? "border-brand-orange bg-orange-50 text-brand-orange "
+                  : "border-slate-200 text-slate-500 hover:border-brand-purple hover:text-brand-purple   "
               }`}
               disabled={compareDisabled}
               onClick={() => onCompare(product.slug)}
@@ -102,8 +102,9 @@ export function ProductCard({
             </button>
           </div>
           <Link
-            className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500 transition hover:text-brand-purple dark:text-slate-400 dark:hover:text-orange-300"
+            className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500 transition hover:text-brand-purple  "
             href={`/products/${product.slug}`}
+            prefetch
           >
             {text.catalog.viewDetails}
             <ArrowUpRight aria-hidden="true" className="size-3.5" />

@@ -8,7 +8,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { ThemeProvider } from "next-themes";
+import { useReducedMotion } from "framer-motion";
+import { ReactLenis } from "lenis/react";
 import { EnquiryProvider } from "@/components/product/enquiry-context";
 
 type Locale = "en" | "hi";
@@ -29,8 +30,6 @@ const copy = {
     languageButton: "Hindi",
     switchToHindi: "Switch language to Hindi",
     switchToEnglish: "Switch language to English",
-    switchToLightTheme: "Switch to light theme",
-    switchToDarkTheme: "Switch to dark theme",
     logoHome: "Surya Power Industries home",
     skipLink: "Skip to content",
     statsLabel: "Surya Power Industries at a glance",
@@ -446,8 +445,6 @@ const copy = {
     languageButton: "English",
     switchToHindi: "भाषा हिंदी में बदलें",
     switchToEnglish: "भाषा अंग्रेज़ी में बदलें",
-    switchToLightTheme: "लाइट थीम चुनें",
-    switchToDarkTheme: "डार्क थीम चुनें",
     logoHome: "सूर्या पावर इंडस्ट्रीज होम",
     skipLink: "मुख्य सामग्री पर जाएं",
     statsLabel: "सूर्या पावर इंडस्ट्रीज की एक झलक",
@@ -859,6 +856,7 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function AppProviders({ children }: { children: ReactNode }) {
   const [locale, setLocale] = useState<Locale>("en");
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -872,13 +870,21 @@ export function AppProviders({ children }: { children: ReactNode }) {
     }),
     [locale],
   );
+  const scrollOptions = useMemo(
+    () => ({
+      lerp: reduceMotion ? 1 : 0.075,
+      smoothWheel: !reduceMotion,
+      anchors: !reduceMotion,
+    }),
+    [reduceMotion],
+  );
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+    <ReactLenis root options={scrollOptions}>
       <LanguageContext.Provider value={value}>
         <EnquiryProvider>{children}</EnquiryProvider>
       </LanguageContext.Provider>
-    </ThemeProvider>
+    </ReactLenis>
   );
 }
 

@@ -11,16 +11,16 @@ export function HowItWorks() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="overflow-hidden bg-brand-cream px-5 py-20 dark:bg-slate-900 sm:px-8 sm:py-28" id="how-it-works">
+    <section className="overflow-hidden bg-brand-cream px-5 py-20  sm:px-8 sm:py-28" id="how-it-works">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-purple dark:text-orange-300">
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-purple ">
             {text.how.eyebrow}
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
+          <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-slate-950  sm:text-4xl">
             {text.how.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 dark:text-slate-400 sm:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600  sm:text-base">
             {text.how.description}
           </p>
         </div>
@@ -34,7 +34,7 @@ export function HowItWorks() {
             const Icon = icons[index];
             return (
               <motion.article
-                className="relative rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-purple/5 dark:border-white/10 dark:bg-slate-950 sm:p-6"
+                className="relative rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-purple/5   sm:p-6"
                 initial={reduceMotion ? false : { opacity: 0, y: 18 }}
                 key={step.title}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
@@ -45,20 +45,20 @@ export function HowItWorks() {
                   <span className="grid size-12 place-items-center rounded-2xl bg-brand-purple text-white shadow-lg shadow-brand-purple/20">
                     <Icon aria-hidden="true" className="size-5" />
                   </span>
-                  <span className="font-heading text-sm font-semibold tracking-[0.15em] text-slate-300 dark:text-slate-700">
+                  <span className="font-heading text-sm font-semibold tracking-[0.15em] text-slate-300 ">
                     0{index + 1}
                   </span>
                 </div>
-                <h3 className="mt-6 font-heading text-lg font-semibold text-slate-950 dark:text-white">
+                <h3 className="mt-6 font-heading text-lg font-semibold text-slate-950 ">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                <p className="mt-2 text-sm leading-6 text-slate-600 ">
                   {step.description}
                 </p>
                 {index < text.how.steps.length - 1 && (
                   <ArrowDown
                     aria-hidden="true"
-                    className="absolute -bottom-3 left-1/2 z-10 size-5 -translate-x-1/2 rounded-full bg-white text-brand-orange lg:hidden dark:bg-slate-950"
+                    className="absolute -bottom-3 left-1/2 z-10 size-5 -translate-x-1/2 rounded-full bg-white text-brand-orange lg:hidden "
                   />
                 )}
               </motion.article>

@@ -1,9 +1,4 @@
-export type ProductCategory =
-  | "Lightning Protection"
-  | "Earthing"
-  | "Accessories"
-  | "Cable Management"
-  | "Services";
+export type ProductCategory = string;
 
 export type ProductSpec = {
   label: string;
@@ -54,6 +49,14 @@ export const productCategories = [
   "Cable Management",
   "Services",
 ] as const satisfies readonly ProductCategory[];
+
+export function getProductCategoryLabel(
+  category: ProductCategory,
+  translatedCategories: readonly string[],
+) {
+  const index = (productCategories as readonly string[]).indexOf(category);
+  return index < 0 ? category : translatedCategories[index] ?? category;
+}
 
 // Replace each image path with the corresponding approved product photograph.
 export const products: Product[] = [

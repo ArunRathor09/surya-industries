@@ -7,14 +7,11 @@ import {
   Languages,
   ListPlus,
   Menu,
-  Moon,
   Search,
-  Sun,
   X,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
-import { useTheme } from "next-themes";
 import { site } from "@/data/site";
 import { useLanguage } from "@/components/providers";
 import { BrandLogo } from "@/components/shared/brand-logo";
@@ -29,7 +26,6 @@ export function SiteHeader() {
   const pathname = usePathname();
   const { locale, text, toggleLocale } = useLanguage();
   const { productSlugs, openDrawer } = useEnquiryList();
-  const { resolvedTheme, setTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [visible, setVisible] = useState(true);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -111,13 +107,13 @@ export function SiteHeader() {
         initial={false}
         transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
       >
-      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-2xl border border-white/60 bg-white/85 px-3 py-2.5 shadow-[0_12px_42px_rgb(15_23_42/10%)] backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/80 sm:px-5">
+      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-2xl border border-white/60 bg-white/85 px-3 py-2.5 shadow-[0_12px_42px_rgb(15_23_42/10%)] backdrop-blur-xl   sm:px-5">
         <Link
           aria-label={text.logoHome}
           className="rounded-lg"
           href="/"
         >
-          <BrandLogo />
+          <BrandLogo priority />
         </Link>
 
         <nav aria-label={text.mainNavigation} className="hidden items-center gap-1 lg:flex">
@@ -133,8 +129,8 @@ export function SiteHeader() {
                     aria-haspopup="menu"
                     className={`inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-[13px] font-medium transition ${
                       servicesOpen
-                        ? "bg-brand-purple/10 text-brand-purple dark:bg-white/10 dark:text-white"
-                        : "text-slate-600 hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+                        ? "bg-brand-purple/10 text-brand-purple  "
+                        : "text-slate-600 hover:bg-slate-100 hover:text-slate-950   "
                     }`}
                     onClick={() => {
                       cancelServicesClose();
@@ -169,8 +165,8 @@ export function SiteHeader() {
                   aria-current={active ? "page" : undefined}
                   className={`rounded-full px-3.5 py-2 text-[13px] font-medium transition ${
                     active
-                      ? "bg-brand-purple/10 text-brand-purple dark:bg-white/10 dark:text-white"
-                      : "text-slate-600 hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+                      ? "bg-brand-purple/10 text-brand-purple  "
+                      : "text-slate-600 hover:bg-slate-100 hover:text-slate-950   "
                   }`}
                   href={item.href}
                 >
@@ -184,7 +180,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-1.5 sm:gap-2">
           <button
             aria-label={text.header.search}
-            className="grid size-9 place-items-center rounded-full text-slate-600 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/10"
+            className="grid size-9 place-items-center rounded-full text-slate-600 transition hover:bg-slate-100  "
             onClick={() => window.dispatchEvent(new Event("spi:open-search"))}
             type="button"
           >
@@ -192,7 +188,7 @@ export function SiteHeader() {
           </button>
           <button
             aria-label={`${text.header.enquiryList} (${productSlugs.length})`}
-            className="relative grid size-9 place-items-center rounded-full text-slate-600 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/10"
+            className="relative grid size-9 place-items-center rounded-full text-slate-600 transition hover:bg-slate-100  "
             onClick={openDrawer}
             type="button"
           >
@@ -205,30 +201,12 @@ export function SiteHeader() {
           </button>
           <button
             aria-label={locale === "en" ? text.switchToHindi : text.switchToEnglish}
-            className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-2 text-xs font-bold tracking-wide text-slate-600 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/10 sm:px-3"
+            className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-2 text-xs font-bold tracking-wide text-slate-600 transition hover:bg-slate-100   sm:px-3"
             onClick={toggleLocale}
             type="button"
           >
             <Languages aria-hidden="true" className="size-4" />
             <span>{text.languageButton}</span>
-          </button>
-          <button
-            aria-label={
-              resolvedTheme === "dark"
-                ? text.switchToLightTheme
-                : text.switchToDarkTheme
-            }
-            className="grid size-9 place-items-center rounded-full text-slate-600 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/10"
-            onClick={() =>
-              setTheme(resolvedTheme === "dark" ? "light" : "dark")
-            }
-            type="button"
-          >
-            {resolvedTheme === "dark" ? (
-              <Sun aria-hidden="true" className="size-4" />
-            ) : (
-              <Moon aria-hidden="true" className="size-4" />
-            )}
           </button>
           <Link
             className="hidden items-center rounded-full bg-brand-purple px-4 py-2.5 text-xs font-semibold text-white shadow-lg shadow-brand-purple/20 transition hover:bg-purple-800 sm:inline-flex"
@@ -239,7 +217,7 @@ export function SiteHeader() {
           <button
             aria-expanded={menuOpen}
             aria-label={menuOpen ? text.closeMenu : text.openMenu}
-            className="grid size-9 place-items-center rounded-full text-slate-800 transition hover:bg-slate-100 dark:text-white dark:hover:bg-white/10 lg:hidden"
+            className="grid size-9 place-items-center rounded-full text-slate-800 transition hover:bg-slate-100   lg:hidden"
             onClick={() => setMenuOpen((open) => !open)}
             type="button"
           >
@@ -267,7 +245,7 @@ export function SiteHeader() {
             <motion.nav
               animate={{ opacity: 1, y: 0, scale: 1 }}
               aria-label={text.mobileNavigation}
-              className="mx-auto mt-2 flex max-h-[calc(100dvh-6.5rem)] max-w-7xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl dark:border-white/10 dark:bg-slate-950 lg:hidden"
+              className="mx-auto mt-2 flex max-h-[calc(100dvh-6.5rem)] max-w-7xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl   lg:hidden"
               exit={{ opacity: 0, y: -8, scale: 0.98 }}
               initial={{ opacity: 0, y: -8, scale: 0.98 }}
               transition={{ duration: 0.18 }}
@@ -285,8 +263,8 @@ export function SiteHeader() {
                         aria-current={active ? "page" : undefined}
                         className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-medium ${
                           active
-                            ? "bg-brand-purple/10 text-brand-purple dark:text-white"
-                            : "text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-white/5"
+                            ? "bg-brand-purple/10 text-brand-purple "
+                            : "text-slate-700 hover:bg-slate-50  "
                         }`}
                         href={item.href}
                         onClick={() => setMenuOpen(false)}
@@ -297,7 +275,7 @@ export function SiteHeader() {
                   );
                 })}
               </div>
-              <div className="sticky bottom-0 border-t border-slate-200 bg-white pt-2 dark:border-white/10 dark:bg-slate-950">
+              <div className="sticky bottom-0 border-t border-slate-200 bg-white pt-2  ">
                 <Link
                   className="flex min-h-12 items-center justify-center rounded-xl bg-brand-orange px-4 py-3 text-sm font-bold text-brand-navy"
                   href="/#home-enquiry"

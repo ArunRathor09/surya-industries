@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { cache } from "react";
 import { ProductDetailContent } from "@/components/product/product-detail-content";
 import { site } from "@/data/site";
-import { getProductBySlug, getProducts } from "@/lib/product-repository";
+import { getProductPageData } from "@/lib/product-repository";
 
 export const dynamic = "force-dynamic";
+
+const getProductPageForRequest = cache((slug: string) => getProductPageData(slug));
 
 export async function generateMetadata({
   params,
@@ -12,7 +15,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const product = await getProductBySlug(slug);
+  const pageData = await getProductPageForRequest(slug);
+  const product = pageData?.product;
   if (!product) return { title: "Product not found" };
 
   return {
@@ -34,13 +38,13 @@ export default async function ProductDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = await getProductBySlug(slug);
-  if (!product) notFound();
+  const pageData = await getProductPageForRequest(slug);
+  if (!pageData) notFound();
 
-  const allProducts = await getProducts();
-  const relatedProducts = allProducts
-    .filter((item) => item.category === product.category && item.slug !== product.slug)
-    .slice(0, 3);
-
-  return <ProductDetailContent product={product} relatedProducts={relatedProducts} />;
+  return (
+    <ProductDetailContent
+      product={pageData.product}
+      relatedProducts={pageData.relatedProducts}
+    />
+  );
 }

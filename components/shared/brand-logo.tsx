@@ -1,6 +1,12 @@
 import Image from "next/image";
 
-export function BrandLogo({ compact = false }: { compact?: boolean }) {
+export function BrandLogo({
+  compact = false,
+  priority = false,
+}: {
+  compact?: boolean;
+  priority?: boolean;
+}) {
   return (
     <span
       aria-hidden="true"
@@ -15,6 +21,7 @@ export function BrandLogo({ compact = false }: { compact?: boolean }) {
           alt=""
           className="size-full rounded-full object-cover"
           height={128}
+          priority={priority}
           sizes={compact ? "40px" : "(max-width: 640px) 44px, 48px"}
           src="/suryaLogo.jpeg"
           width={128}
@@ -22,10 +29,10 @@ export function BrandLogo({ compact = false }: { compact?: boolean }) {
       </span>
       {!compact && (
         <span className="hidden leading-tight sm:block">
-          <span className="block font-heading text-xs font-bold tracking-[0.055em] text-slate-900 dark:text-white">
+          <span className="block font-heading text-xs font-bold tracking-[0.055em] text-slate-900 ">
             SURYA POWER
           </span>
-          <span className="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.19em] text-slate-500 dark:text-slate-400">
+          <span className="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.19em] text-slate-500 ">
             Industries
           </span>
         </span>

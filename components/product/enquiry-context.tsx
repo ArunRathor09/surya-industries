@@ -9,7 +9,6 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { products } from "@/data/products";
 
 const STORAGE_KEY = "spi-product-enquiry-list";
 
@@ -40,8 +39,7 @@ export function EnquiryProvider({ children }: { children: ReactNode }) {
           Array.isArray(parsed) &&
           parsed.every((slug): slug is string => typeof slug === "string")
         ) {
-          const knownSlugs = new Set(products.map((product) => product.slug));
-          setProductSlugs(parsed.filter((slug) => knownSlugs.has(slug)));
+          setProductSlugs(parsed);
         } else {
           console.error("Saved SPI enquiry list has an invalid format.");
         }
@@ -66,8 +64,8 @@ export function EnquiryProvider({ children }: { children: ReactNode }) {
     [productSlugs],
   );
   const addProduct = useCallback((slug: string) => {
-    if (!products.some((product) => product.slug === slug)) {
-      console.error(`Cannot add unknown SPI product "${slug}" to the enquiry list.`);
+    if (!slug.trim()) {
+      console.error("Cannot add a product without a valid slug to the enquiry list.");
       return;
     }
     setProductSlugs((current) =>

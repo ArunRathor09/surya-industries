@@ -15,7 +15,7 @@ export function ProductDetailActions({ slug }: { slug: string }) {
         aria-pressed={added}
         className={`inline-flex min-h-12 items-center gap-2 rounded-full px-6 text-sm font-bold transition ${
           added
-            ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300"
+            ? "bg-emerald-50 text-emerald-700  "
             : "bg-brand-purple text-white shadow-lg shadow-brand-purple/15 hover:bg-purple-800"
         }`}
         disabled={added}
@@ -30,7 +30,7 @@ export function ProductDetailActions({ slug }: { slug: string }) {
         {added ? text.catalog.addedToList : text.catalog.addToList}
       </button>
       <button
-        className="inline-flex min-h-12 items-center gap-2 rounded-full border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-700 transition hover:border-brand-purple hover:text-brand-purple dark:border-white/10 dark:bg-slate-900 dark:text-slate-200 dark:hover:text-white"
+        className="inline-flex min-h-12 items-center gap-2 rounded-full border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-700 transition hover:border-brand-purple hover:text-brand-purple    "
         onClick={() => {
           addProduct(slug);
           openDrawer();

@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS products (
   id BIGSERIAL PRIMARY KEY,
-  slug VARCHAR(180) NOT NULL UNIQUE,
-  name VARCHAR(180) NOT NULL,
+  slug TEXT NOT NULL UNIQUE,
+  name TEXT NOT NULL,
   category TEXT NOT NULL CHECK (
     category IN (
       'Lightning Protection',

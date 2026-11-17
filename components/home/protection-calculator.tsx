@@ -44,31 +44,31 @@ export function ProtectionCalculator() {
   const buildingHeight = Math.min(112, 52 + height * 3);
 
   return (
-    <section className="bg-white px-5 py-20 dark:bg-slate-950 sm:px-8 sm:py-28" id="calculator">
+    <section className="bg-white px-5 py-20  sm:px-8 sm:py-28" id="calculator">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-purple dark:text-orange-300">
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-purple ">
             {text.calculator.eyebrow}
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
+          <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-slate-950  sm:text-4xl">
             {text.calculator.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 dark:text-slate-400 sm:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600  sm:text-base">
             {text.calculator.description}
           </p>
         </div>
 
-        <div className="mt-11 grid overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_24px_70px_rgb(15_23_42/8%)] dark:border-white/10 dark:bg-slate-900 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="mt-11 grid overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_24px_70px_rgb(15_23_42/8%)]   lg:grid-cols-[0.9fr_1.1fr]">
           <div className="p-6 sm:p-9">
             <label
-              className="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-200"
+              className="flex items-center gap-2 text-xs font-semibold text-slate-700 "
               htmlFor="ese-model"
             >
               <Zap aria-hidden="true" className="size-4 text-brand-orange" />
               {text.calculator.model}
             </label>
             <select
-              className="mt-2.5 min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm font-medium text-slate-900 outline-none transition focus:border-brand-purple focus:ring-4 focus:ring-brand-purple/10 dark:border-white/10 dark:bg-slate-950 dark:text-white"
+              className="mt-2.5 min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm font-medium text-slate-900 outline-none transition focus:border-brand-purple focus:ring-4 focus:ring-brand-purple/10   "
               id="ese-model"
               onChange={(event) => setModel(event.target.value as ESEModel)}
               value={model}
@@ -80,14 +80,14 @@ export function ProtectionCalculator() {
             <div className="mt-6 grid gap-5 sm:grid-cols-2">
               <div>
                 <label
-                  className="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-200"
+                  className="flex items-center gap-2 text-xs font-semibold text-slate-700 "
                   htmlFor="mount-height"
                 >
                   <Ruler aria-hidden="true" className="size-4 text-brand-purple" />
                   {text.calculator.height}
                 </label>
                 <select
-                  className="mt-2.5 min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition focus:border-brand-purple focus:ring-4 focus:ring-brand-purple/10 dark:border-white/10 dark:bg-slate-950 dark:text-white"
+                  className="mt-2.5 min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition focus:border-brand-purple focus:ring-4 focus:ring-brand-purple/10   "
                   id="mount-height"
                   onChange={(event) =>
                     setHeight(Number(event.target.value) as (typeof mountingHeights)[number])
@@ -103,14 +103,14 @@ export function ProtectionCalculator() {
               </div>
               <div>
                 <label
-                  className="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-200"
+                  className="flex items-center gap-2 text-xs font-semibold text-slate-700 "
                   htmlFor="protection-level"
                 >
                   <ShieldCheck aria-hidden="true" className="size-4 text-brand-purple" />
                   {text.calculator.level}
                 </label>
                 <select
-                  className="mt-2.5 min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition focus:border-brand-purple focus:ring-4 focus:ring-brand-purple/10 dark:border-white/10 dark:bg-slate-950 dark:text-white"
+                  className="mt-2.5 min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition focus:border-brand-purple focus:ring-4 focus:ring-brand-purple/10   "
                   id="protection-level"
                   onChange={(event) =>
                     setLevel(Number(event.target.value) as (typeof protectionLevels)[number])
@@ -149,12 +149,12 @@ export function ProtectionCalculator() {
               </div>
             </div>
 
-            <p className="mt-5 text-xs leading-6 text-slate-500 dark:text-slate-400">
+            <p className="mt-5 text-xs leading-6 text-slate-500 ">
               {text.calculator.guardNote}
             </p>
           </div>
 
-          <div className="relative flex min-h-[330px] items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-orange-50/50 to-violet-50 px-4 py-8 dark:from-slate-950 dark:via-slate-900 dark:to-violet-950/30 sm:min-h-[450px]">
+          <div className="relative flex min-h-[330px] items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-orange-50/50 to-violet-50 px-4 py-8    sm:min-h-[450px]">
             <div aria-hidden="true" className="absolute inset-0 opacity-40 [background-image:radial-gradient(#94a3b8_0.7px,transparent_0.7px)] [background-size:18px_18px]" />
             <svg
               aria-label={text.calculator.buildingLabel}

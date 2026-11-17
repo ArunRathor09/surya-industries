@@ -27,12 +27,12 @@ export function ServiceImage({
   return (
     <div
       aria-label={failed ? alt : undefined}
-      className={`relative isolate overflow-hidden bg-gradient-to-br from-violet-100 via-white to-orange-100 dark:from-violet-950/50 dark:via-slate-900 dark:to-orange-950/30 ${className}`}
+      className={`relative isolate overflow-hidden bg-gradient-to-br from-violet-100 via-white to-orange-100    ${className}`}
       role={failed ? "img" : undefined}
     >
       {failed ? (
         <div aria-hidden="true" className="absolute inset-0 grid place-items-center">
-          <span className="grid size-16 place-items-center rounded-2xl border border-white/80 bg-white/75 text-brand-purple shadow-lg dark:border-white/10 dark:bg-slate-950/50 dark:text-orange-300">
+          <span className="grid size-16 place-items-center rounded-2xl border border-white/80 bg-white/75 text-brand-purple shadow-lg   ">
             <Icon className="size-8" strokeWidth={1.5} />
           </span>
         </div>

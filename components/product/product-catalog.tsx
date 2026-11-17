@@ -8,7 +8,7 @@ import { ProductCard } from "@/components/product/product-card";
 import { ProductCompareDialog } from "@/components/product/product-compare-dialog";
 import { ProductQuickView } from "@/components/product/product-quick-view";
 import {
-  productCategories,
+  getProductCategoryLabel,
   type Product,
   type ProductCategory,
 } from "@/data/products";
@@ -16,7 +16,13 @@ import {
 type CategoryFilter = ProductCategory | "All";
 type SortOrder = "name-asc" | "name-desc" | "newest";
 
-export function ProductCatalog({ initialProducts }: { initialProducts: Product[] }) {
+export function ProductCatalog({
+  initialProducts,
+  initialCategories,
+}: {
+  initialProducts: Product[];
+  initialCategories: ProductCategory[];
+}) {
   const { text } = useLanguage();
   const [category, setCategory] = useState<CategoryFilter>("All");
   const [query, setQuery] = useState("");
@@ -25,6 +31,11 @@ export function ProductCatalog({ initialProducts }: { initialProducts: Product[]
   const [compareOpen, setCompareOpen] = useState(false);
   const [compareNotice, setCompareNotice] = useState("");
   const [quickProduct, setQuickProduct] = useState<Product | null>(null);
+
+  const categories = useMemo(
+    () => Array.from(new Set([...initialCategories, ...initialProducts.map((product) => product.category)])),
+    [initialCategories, initialProducts],
+  );
 
   const visibleProducts = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase();
@@ -79,25 +90,25 @@ export function ProductCatalog({ initialProducts }: { initialProducts: Product[]
 
   return (
     <>
-      <section className="relative overflow-hidden bg-gradient-to-br from-white via-brand-cream to-[#f4f0ff] px-5 pb-12 pt-32 dark:from-slate-950 dark:via-slate-950 dark:to-[#19132c] sm:px-8 sm:pb-16 sm:pt-40">
-        <div aria-hidden="true" className="absolute -right-36 -top-20 size-[30rem] rounded-full bg-brand-purple/8 blur-[120px] dark:bg-brand-purple/20" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-white via-brand-cream to-[#f4f0ff] px-5 pb-12 pt-32    sm:px-8 sm:pb-16 sm:pt-40">
+        <div aria-hidden="true" className="absolute -right-36 -top-20 size-[30rem] rounded-full bg-brand-purple/8 blur-[120px] " />
         <div className="relative mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <p className="inline-flex items-center gap-2 rounded-full border border-brand-purple/15 bg-white/80 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-purple shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-orange-300">
+            <p className="inline-flex items-center gap-2 rounded-full border border-brand-purple/15 bg-white/80 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-purple shadow-sm   ">
               <span aria-hidden="true" className="size-1.5 rounded-full bg-brand-orange" />
               {text.catalog.eyebrow}
             </p>
-            <h1 className="mt-5 font-heading text-4xl font-semibold leading-tight tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-heading text-4xl font-semibold leading-tight tracking-tight text-slate-950  sm:text-5xl lg:text-6xl">
               {text.catalog.title}
             </h1>
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600  sm:text-base">
               {text.catalog.description}
             </p>
           </div>
           <div className="mt-8 flex flex-wrap gap-2">
             {text.badges.map((badge) => (
               <span
-                className="rounded-full border border-slate-200 bg-white/75 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-wide text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+                className="rounded-full border border-slate-200 bg-white/75 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-wide text-slate-600   "
                 key={badge}
               >
                 {badge}
@@ -112,16 +123,16 @@ export function ProductCatalog({ initialProducts }: { initialProducts: Product[]
           <div className="flex flex-col gap-5">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <p className="text-sm font-semibold text-slate-900 dark:text-white">
+                <p className="text-sm font-semibold text-slate-900 ">
                   {text.catalog.showing} {visibleProducts.length} {text.catalog.products}
                 </p>
-                <p className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                <p className="mt-1 text-[11px] text-slate-500 ">
                   {text.catalog.compareLimit}
                 </p>
               </div>
               {compareSlugs.length > 0 && (
                 <button
-                  className="hidden text-[11px] font-semibold text-slate-500 underline underline-offset-4 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white sm:inline"
+                  className="hidden text-[11px] font-semibold text-slate-500 underline underline-offset-4 hover:text-slate-900   sm:inline"
                   onClick={() => setCompareSlugs([])}
                   type="button"
                 >
@@ -136,26 +147,26 @@ export function ProductCatalog({ initialProducts }: { initialProducts: Product[]
                 className={`shrink-0 rounded-full px-4 py-2.5 text-xs font-semibold transition ${
                   category === "All"
                     ? "bg-brand-purple text-white shadow-md shadow-brand-purple/15"
-                    : "border border-slate-200 bg-white text-slate-600 hover:border-brand-purple/30 hover:text-brand-purple dark:border-white/10 dark:bg-slate-900 dark:text-slate-300"
+                    : "border border-slate-200 bg-white text-slate-600 hover:border-brand-purple/30 hover:text-brand-purple   "
                 }`}
                 onClick={() => setCategory("All")}
                 type="button"
               >
                 {text.catalog.all}
               </button>
-              {productCategories.map((item, index) => (
+              {categories.map((item) => (
                 <button
                   aria-pressed={category === item}
                   className={`shrink-0 rounded-full px-4 py-2.5 text-xs font-semibold transition ${
                     category === item
                       ? "bg-brand-purple text-white shadow-md shadow-brand-purple/15"
-                      : "border border-slate-200 bg-white text-slate-600 hover:border-brand-purple/30 hover:text-brand-purple dark:border-white/10 dark:bg-slate-900 dark:text-slate-300"
+                      : "border border-slate-200 bg-white text-slate-600 hover:border-brand-purple/30 hover:text-brand-purple   "
                   }`}
                   key={item}
                   onClick={() => setCategory(item)}
                   type="button"
                 >
-                  {text.catalog.categories[index]}
+                  {getProductCategoryLabel(item, text.catalog.categories)}
                 </button>
               ))}
             </div>
@@ -165,7 +176,7 @@ export function ProductCatalog({ initialProducts }: { initialProducts: Product[]
                 <span className="sr-only">{text.catalog.searchLabel}</span>
                 <Search aria-hidden="true" className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
                 <input
-                  className="min-h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-11 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand-purple/50 focus:ring-4 focus:ring-brand-purple/10 dark:border-white/10 dark:bg-slate-900 dark:text-white"
+                  className="min-h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-11 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand-purple/50 focus:ring-4 focus:ring-brand-purple/10   "
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder={text.catalog.searchPlaceholder}
                   type="search"
@@ -174,7 +185,7 @@ export function ProductCatalog({ initialProducts }: { initialProducts: Product[]
                 {query && (
                   <button
                     aria-label={text.catalog.clearFilters}
-                    className="absolute right-3 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full text-slate-500 hover:bg-slate-100 dark:hover:bg-white/10"
+                    className="absolute right-3 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full text-slate-500 hover:bg-slate-100 "
                     onClick={() => setQuery("")}
                     type="button"
                   >
@@ -182,11 +193,11 @@ export function ProductCatalog({ initialProducts }: { initialProducts: Product[]
                   </button>
                 )}
               </label>
-              <label className="relative flex min-h-12 items-center rounded-xl border border-slate-200 bg-white dark:border-white/10 dark:bg-slate-900">
+              <label className="relative flex min-h-12 items-center rounded-xl border border-slate-200 bg-white  ">
                 <ArrowDownUp aria-hidden="true" className="ml-4 size-4 shrink-0 text-slate-400" />
                 <span className="sr-only">{text.catalog.sortLabel}</span>
                 <select
-                  className="h-full min-h-12 min-w-40 flex-1 appearance-none bg-transparent px-3 text-xs font-medium text-slate-700 outline-none dark:text-slate-200"
+                  className="h-full min-h-12 min-w-40 flex-1 appearance-none bg-transparent px-3 text-xs font-medium text-slate-700 outline-none "
                   onChange={(event) => setSortOrder(event.target.value as SortOrder)}
                   value={sortOrder}
                 >
@@ -199,18 +210,18 @@ export function ProductCatalog({ initialProducts }: { initialProducts: Product[]
           </div>
 
           {compareNotice && (
-            <p aria-live="polite" className="mt-4 rounded-lg bg-amber-50 px-4 py-3 text-xs font-medium text-amber-900 dark:bg-amber-400/10 dark:text-amber-200" role="status">
+            <p aria-live="polite" className="mt-4 rounded-lg bg-amber-50 px-4 py-3 text-xs font-medium text-amber-900  " role="status">
               {compareNotice}
             </p>
           )}
 
           {visibleProducts.length === 0 ? (
-            <div className="mt-10 rounded-2xl border border-dashed border-slate-300 px-6 py-16 text-center dark:border-white/15">
-              <p className="font-heading text-lg font-semibold text-slate-900 dark:text-white">
+            <div className="mt-10 rounded-2xl border border-dashed border-slate-300 px-6 py-16 text-center ">
+              <p className="font-heading text-lg font-semibold text-slate-900 ">
                 {text.catalog.noResults}
               </p>
               <button
-                className="mt-4 text-xs font-semibold text-brand-purple underline underline-offset-4 dark:text-orange-300"
+                className="mt-4 text-xs font-semibold text-brand-purple underline underline-offset-4 "
                 onClick={clearFilters}
                 type="button"
               >
@@ -249,8 +260,8 @@ export function ProductCatalog({ initialProducts }: { initialProducts: Product[]
 
       {compareSlugs.length >= 2 && (
         <div className="fixed inset-x-0 bottom-20 z-30 px-4 sm:bottom-6">
-          <div className="mx-auto flex max-w-xl items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white/95 p-3 pl-5 shadow-[0_16px_50px_rgb(15_23_42/16%)] backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/95">
-            <span className="text-xs font-medium text-slate-600 dark:text-slate-300">
+          <div className="mx-auto flex max-w-xl items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white/95 p-3 pl-5 shadow-[0_16px_50px_rgb(15_23_42/16%)] backdrop-blur-xl  ">
+            <span className="text-xs font-medium text-slate-600 ">
               {compareSlugs.length} / 3 {text.catalog.compare}
             </span>
             <button

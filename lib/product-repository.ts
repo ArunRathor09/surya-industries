@@ -1,8 +1,8 @@
-import { products, type Product } from "@/data/products";
-import { getDatabasePool, isDatabaseConfigured } from "@/lib/database";
+import { productCategories, products, type Product } from "@/data/products";
+import { getNeonSql, isDatabaseConfigured } from "@/lib/database";
 
 type ProductRow = {
-  id: string | number;
+  id: number | string;
   slug: string;
   name: string;
   category: Product["category"];
@@ -23,54 +23,151 @@ function mapProduct(row: ProductRow): Product {
   };
 }
 
+function toCatalogProduct(product: Product): Product {
+  const catalogProduct = { ...product };
+  delete catalogProduct.applications;
+  delete catalogProduct.guideSections;
+  delete catalogProduct.protectionRadius;
+  return catalogProduct;
+}
+
 export async function getProducts(): Promise<Product[]> {
   if (!isDatabaseConfigured()) return products;
 
-  const result = await getDatabasePool().query<ProductRow>(
+  const rows = await getNeonSql().query(
     `SELECT id, slug, name, category, price::float8 AS price, product_data
      FROM products
      ORDER BY name`,
   );
-  return result.rows.map(mapProduct);
+  return rows.map((row) => mapProduct(row as ProductRow));
 }
 
-export async function getProductBySlug(slug: string): Promise<Product | undefined> {
-  if (!isDatabaseConfigured()) return products.find((product) => product.slug === slug);
+export async function getCatalogProducts(): Promise<Product[]> {
+  if (!isDatabaseConfigured()) return products.map(toCatalogProduct);
 
-  const result = await getDatabasePool().query<ProductRow>(
+  const rows = await getNeonSql().query(
+    `SELECT id, slug, name, category, price::float8 AS price,
+            product_data - 'applications' - 'guideSections' - 'protectionRadius' AS product_data
+     FROM products
+     ORDER BY name`,
+  );
+  return rows.map((row) => mapProduct(row as ProductRow));
+}
+
+export async function getProductsBySlugs(slugs: string[]): Promise<Product[]> {
+  if (slugs.length === 0) return [];
+  if (!isDatabaseConfigured()) {
+    const slugSet = new Set(slugs);
+    return products.filter((product) => slugSet.has(product.slug));
+  }
+
+  const placeholders = slugs.map((_, index) => `$${index + 1}`).join(", ");
+  const rows = await getNeonSql().query(
     `SELECT id, slug, name, category, price::float8 AS price, product_data
      FROM products
-     WHERE slug = $1`,
+     WHERE slug IN (${placeholders})`,
+    slugs,
+  );
+  return rows.map((row) => mapProduct(row as ProductRow));
+}
+
+export async function getProductPageData(slug: string): Promise<{
+  product: Product;
+  relatedProducts: Product[];
+} | undefined> {
+  if (!isDatabaseConfigured()) {
+    const product = products.find((item) => item.slug === slug);
+    if (!product) return undefined;
+    return {
+      product,
+      relatedProducts: products
+        .filter((item) => item.category === product.category && item.slug !== slug)
+        .slice(0, 3),
+    };
+  }
+
+  const rows = await getNeonSql().query(
+    `WITH selected AS (
+       SELECT id, slug, name, category, price::float8 AS price, product_data
+       FROM products
+       WHERE slug = $1
+     ),
+     related AS (
+       SELECT id, slug, name, category, price::float8 AS price, product_data
+       FROM products
+       WHERE category = (SELECT category FROM selected) AND slug <> $1
+       ORDER BY name
+       LIMIT 3
+     )
+     SELECT id, slug, name, category, price, product_data FROM selected
+     UNION ALL
+     SELECT id, slug, name, category, price, product_data FROM related`,
     [slug],
   );
-  return result.rows[0] ? mapProduct(result.rows[0]) : undefined;
+  const productRow = rows.find((row) => (row as ProductRow).slug === slug) as
+    | ProductRow
+    | undefined;
+  if (!productRow) return undefined;
+
+  return {
+    product: mapProduct(productRow),
+    relatedProducts: rows
+      .filter((row) => (row as ProductRow).slug !== slug)
+      .map((row) => mapProduct(row as ProductRow))
+      .sort((first, second) => first.name.localeCompare(second.name)),
+  };
+}
+
+export async function getProductCategories(options: { allowMissingTableFallback?: boolean } = {}): Promise<string[]> {
+  if (!isDatabaseConfigured()) return [...productCategories];
+
+  try {
+    const rows = await getNeonSql().query(
+      "SELECT name FROM product_categories ORDER BY name",
+    );
+    return rows.map((row) => String(row.name));
+  } catch (error) {
+    if (
+      !options.allowMissingTableFallback ||
+      typeof error !== "object" ||
+      error === null ||
+      !("code" in error) ||
+      error.code !== "42P01"
+    ) {
+      throw error;
+    }
+
+    return [...productCategories].sort((first, second) => first.localeCompare(second));
+  }
+}
+
+export async function createProductCategory(name: string): Promise<string> {
+  const rows = await getNeonSql().query(
+    "INSERT INTO product_categories (name) VALUES ($1) RETURNING name",
+    [name],
+  );
+  if (!rows[0]) throw new Error("The new category was not returned by the database.");
+  return String(rows[0].name);
 }
 
 export async function createProduct(input: ProductInput): Promise<Product> {
   const productData = { ...input, id: 0 };
-  const result = await getDatabasePool().query<ProductRow>(
+  const rows = await getNeonSql().query(
     `INSERT INTO products (slug, name, category, price, product_data)
      VALUES ($1, $2, $3, $4, $5)
      RETURNING id, slug, name, category, price::float8 AS price, product_data`,
     [input.slug, input.name, input.category, input.price ?? null, JSON.stringify(productData)],
   );
-  return mapProduct(result.rows[0]);
+  if (!rows[0]) throw new Error("The new product was not returned by the database.");
+  return mapProduct(rows[0] as ProductRow);
 }
 
 export async function updateProduct(
   id: number,
   input: ProductInput,
 ): Promise<Product | undefined> {
-  const existing = await getDatabasePool().query<ProductRow>(
-    `SELECT id, slug, name, category, price::float8 AS price, product_data
-     FROM products
-     WHERE id = $1`,
-    [id],
-  );
-  if (!existing.rows[0]) return undefined;
-
-  const product = { ...mapProduct(existing.rows[0]), ...input, id };
-  const result = await getDatabasePool().query<ProductRow>(
+  const product = { ...input, id };
+  const rows = await getNeonSql().query(
     `UPDATE products
      SET slug = $2, name = $3, category = $4, price = $5, product_data = $6,
          updated_at = NOW()
@@ -85,13 +182,13 @@ export async function updateProduct(
       JSON.stringify(product),
     ],
   );
-  return result.rows[0] ? mapProduct(result.rows[0]) : undefined;
+  return rows[0] ? mapProduct(rows[0] as ProductRow) : undefined;
 }
 
 export async function deleteProduct(id: number): Promise<boolean> {
-  const result = await getDatabasePool().query(
-    "DELETE FROM products WHERE id = $1",
+  const rows = await getNeonSql().query(
+    "DELETE FROM products WHERE id = $1 RETURNING id",
     [id],
   );
-  return result.rowCount === 1;
+  return rows.length === 1;
 }
